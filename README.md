@@ -8,6 +8,13 @@ DongClock Server Time의 한국어·영어 공식 제품 소개용 정적 사이
 dongclock-site/
 ├─ index.html
 ├─ en.html
+├─ terms/index.html
+├─ privacy/index.html
+├─ refund/index.html
+├─ accuracy/index.html
+├─ GUMROAD-LEGAL-COPY.md
+├─ sitemap.xml
+├─ robots.txt
 ├─ styles.css
 ├─ script.js
 ├─ README.md
@@ -20,6 +27,8 @@ dongclock-site/
 - `index.html`: 한국어 기본 페이지
 - `en.html`: 영어 페이지
 - 두 페이지의 헤더에서 언어를 전환할 수 있습니다.
+- 네 법적/제품 고지 페이지는 각 URL 안에 한국어와 영어를 모두 포함하며, 언어 링크는 같은 문서의 해당 언어 섹션으로 이동합니다.
+- `GUMROAD-LEGAL-COPY.md`: Basic/Pro Gumroad 상품 설명과 정책에 붙여 넣을 수 있는 양언어 문구입니다.
 
 ## 자주 바꾸는 설정
 
@@ -37,7 +46,7 @@ dongclock-site/
 - 앱 아이콘: `assets/dongclock-icon.png`
 - 제품 화면: `assets/screenshots/basic-app.png`
 
-현재 페이지는 아이콘을 직접 사용합니다. 제품 화면 이미지는 후속 문서나 별도 스크린샷 섹션을 추가할 때 사용할 수 있도록 정리해 두었습니다. Open Graph 이미지를 별도로 만들면 `index.html`의 `og:image`도 함께 변경하세요.
+현재 페이지는 아이콘과 실제 Basic 제품 화면을 사용합니다. Open Graph 이미지에는 공식 사이트의 아이콘 절대 URL이 설정되어 있습니다.
 
 ## 로컬 미리보기
 
@@ -71,7 +80,7 @@ python -m http.server 8000
 - Pro Gumroad URL
 - 제품 버전과 Windows 지원 범위
 - Authenticode / SmartScreen 안내의 현재 배포 정책 일치 여부
-- `og:image`의 절대 URL 필요 여부(소셜 플랫폼별 권장)
+- canonical, Open Graph URL과 `sitemap.xml`의 공식 배포 주소
 - 아이콘과 스크린샷 파일이 함께 배포되는지
 
 ## 문구 검증 기준

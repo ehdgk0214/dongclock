@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0e0f">
-  <title>DongClock Server Time — Windows용 서버시간 측정 도구</title>
+  <title>DongClock Server Time — HTTP 서버시간 측정 도구 for Windows</title>
   <meta name="description" content="DongClock Server Time은 HTTP Date와 왕복 시간, 다중 표본 검증을 이용해 서버시간을 신중하게 측정하는 Windows 도구입니다.">
-  <meta property="og:title" content="DongClock Server Time">
+  <link rel="canonical" href="https://ehdgk0214.github.io/dongclock/">
+  <meta property="og:title" content="DongClock Server Time — HTTP 서버시간 측정 도구 for Windows">
   <meta property="og:description" content="서버가 알려주는 시간을 더 신중하게 측정합니다.">
-  <meta property="og:image" content="assets/dongclock-icon.png">
+  <meta property="og:image" content="https://ehdgk0214.github.io/dongclock/assets/dongclock-icon.png">
+  <meta property="og:url" content="https://ehdgk0214.github.io/dongclock/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <link rel="alternate" hreflang="ko" href="index.html">
@@ -47,9 +49,9 @@
           <p class="hero-lead">DongClock Server Time은 HTTP 응답 하나를 곧바로 정답으로 표시하지 않습니다. RTT와 여러 표본의 일관성을 살펴, 관측 가능한 범위 안에서 안정적인 서버시간을 추정합니다.</p>
           <div class="cta-row">
             <a class="button button-primary js-basic-link" href="#download" aria-describedby="basic-availability">Basic 무료 다운로드</a>
-            <a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Pro 출시가 — $7 <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Pro — $7 / 1년 <span aria-hidden="true">↗</span></a>
           </div>
-          <p class="cta-note" id="basic-availability">Pro: 출시 초기 $7 · 이후 $10 예정 · 구매일 기준 1년 · 자동 갱신 없음</p>
+          <p class="cta-note" id="basic-availability">Pro: $7 일회성 결제 · 구매일 기준 1년 · 자동 갱신 없음</p>
         </div>
 
         <div class="instrument" aria-label="서버시간 측정 개념을 표현한 계측 패널">
@@ -79,38 +81,19 @@
     <section class="section" id="method" aria-labelledby="method-title">
       <div class="container">
         <div class="section-heading split-heading">
-          <div><p class="eyebrow">측정 원리 / 01</p><h2 id="method-title">응답의 시간과<br>왕복 시간을 함께 봅니다.</h2></div>
-          <p>일반적인 구현은 HTTP <code>Date</code>를 바로 표시하거나 왕복 시간의 절반만큼 보정합니다. DongClock은 요청 전송 <code>t0</code>, 헤더 수신 <code>t1</code>, 1초 단위의 <code>Date D</code>가 허용하는 시차 범위를 먼저 계산합니다.</p>
+          <div><p class="eyebrow">측정 원리 / 01</p><h2 id="method-title">한 번의 응답보다<br>측정의 흐름을 봅니다.</h2></div>
+          <p>DongClock은 서버가 보낸 HTTP 시간과 네트워크 왕복 시간을 함께 관찰하고, 여러 측정이 일관된지 확인한 뒤 결과를 표시합니다.</p>
         </div>
-
-        <div class="measurement-layout">
-          <div class="network-diagram" role="img" aria-label="사용자 PC가 t0에 요청을 보내고 서버 Date 헤더를 t1에 받는 과정">
-            <div class="endpoint"><span class="endpoint-icon">PC</span><strong>내 PC</strong><small>요청 전송 · t0</small></div>
-            <div class="packet-track"><span class="packet-label request">HTTP 요청 →</span><span class="track-line"></span><span class="packet-label response">← Date 헤더</span></div>
-            <div class="endpoint server"><span class="endpoint-icon">HTTP</span><strong>서버</strong><small>Date: D</small></div>
-          </div>
-
-          <div class="formula-panel">
-            <p class="panel-label">가능한 시차 범위</p>
-            <div class="formula"><span>최소 시차</span><strong>= D − t1</strong></div>
-            <div class="formula"><span>최대 시차</span><strong>= D + 1000ms − t0</strong></div>
-            <div class="timeline"><i>t0</i><span><b>RTT</b></span><i>t1</i></div>
-            <p>HTTP Date는 보통 1초 해상도입니다. 그래서 한 표본을 정확한 한 점으로 단정하지 않습니다.</p>
-          </div>
-        </div>
-
-        <div class="sample-story">
-          <div class="sample-copy"><p class="eyebrow">다중 표본 검증</p><h3>하나의 응답을<br>믿지 않습니다.</h3><p>서버시간 측정에서 더 위험한 것은 몇 ms의 오차보다 잘못된 응답을 정확한 값이라고 믿는 일입니다. DongClock은 여러 구간을 겹쳐 보고, 왕복 시간이 비정상적으로 높거나 다른 표본과 합의하지 않는 결과를 제외합니다.</p></div>
-          <div class="sample-viz" aria-label="여러 표본의 offset 범위가 겹치는 영역을 찾는 시각화">
-            <div class="axis"><span>−500 ms</span><span>0</span><span>+500 ms</span></div>
-            <div class="sample"><small>표본 01</small><span style="--left:18%;--right:22%"></span></div>
-            <div class="sample"><small>표본 02</small><span style="--left:29%;--right:31%"></span></div>
-            <div class="sample rejected"><small>높은 왕복 시간</small><span style="--left:4%;--right:5%"></span></div>
-            <div class="sample"><small>표본 04</small><span style="--left:25%;--right:27%"></span></div>
-            <div class="consensus"><small>합의 구간</small><span></span></div>
-            <p>지연 필터 → 구간 합의 → 중간값 추정</p>
-          </div>
-        </div>
+        <ol class="measurement-flow" aria-label="DongClock 서버시간 측정 흐름">
+          <li><span>01</span><strong>웹사이트 주소 입력</strong><small>측정할 HTTP 또는 HTTPS 주소를 지정합니다.</small></li>
+          <li><span>02</span><strong>HTTP 요청</strong><small>대상 서버에 시간 확인 요청을 보냅니다.</small></li>
+          <li><span>03</span><strong>서버시간 수신</strong><small>응답의 Date 정보를 읽습니다.</small></li>
+          <li><span>04</span><strong>왕복 시간 측정</strong><small>요청과 응답에 걸린 시간을 함께 봅니다.</small></li>
+          <li><span>05</span><strong>여러 측정 비교</strong><small>한 번의 응답을 정답으로 단정하지 않습니다.</small></li>
+          <li><span>06</span><strong>비정상 결과 제외</strong><small>지연·캐시·응답 흐름이 의심스러운 결과를 구분합니다.</small></li>
+          <li><span>07</span><strong>서버시간 추정</strong><small>남은 증거가 일관될 때 결과를 표시합니다.</small></li>
+        </ol>
+        <details class="technical-note"><summary>조금 더 기술적으로</summary><p>HTTP Date는 대개 1초 단위이고 편도 네트워크 지연은 직접 알 수 없습니다. DongClock은 가능한 시간 범위와 여러 표본의 합의를 이용하되, 내부 계산식이나 임계값을 정확도 보장처럼 제시하지 않습니다.</p></details>
       </div>
     </section>
 
@@ -129,7 +112,7 @@
 
     <section class="section" id="policy" aria-labelledby="policy-title">
       <div class="container policy-grid">
-        <div class="policy-copy"><p class="eyebrow">서버 친화적 설계 / 03</p><h2 id="policy-title">정확도를 위해<br>서버를 괴롭히지 않습니다.</h2><p class="lead">필요할 때 측정하고, 안정되면 요청 빈도를 낮춥니다.</p><p>DongClock은 초당 수십~수백 요청을 지속해서 보내는 구조가 아닙니다. 초기에는 기준을 만들기 위해 표본을 모으고, 안정 상태에서는 간격을 늘립니다. 오류나 제한 응답을 받으면 요청 간격을 더 늘립니다.</p><div class="policy-note">HTTP 요청이 발생하는 이상 부하가 0인 것은 아닙니다. 다만 지속적으로 지나치게 자주 요청하는 방식을 피하도록 설계되었습니다.</div></div>
+        <div class="policy-copy"><p class="eyebrow">서버 친화적 설계 / 03</p><h2 id="policy-title">서버 친화적으로<br>설계했습니다.</h2><p class="lead">필요할 때 측정하고, 안정되면 요청 빈도를 낮춥니다.</p><p>초기에는 기준을 만들기 위해 표본을 모으고, 안정 상태에서는 간격을 늘립니다. 오류나 제한 응답을 받으면 더 오래 기다립니다.</p><div class="policy-note">HTTP 측정에는 요청이 발생하므로 부하가 0일 수는 없습니다. 대상 서비스의 이용약관과 허용 범위를 확인해 주세요.</div></div>
         <div class="scheduler" aria-label="Basic과 Pro 요청 스케줄 개요">
           <div class="scheduler-head"><span>적응형 요청 정책</span><span>간격이 짧을수록 더 자주 측정</span></div>
           <div class="schedule-row schedule-comparison">
@@ -170,16 +153,22 @@
         <div class="section-heading centered"><p class="eyebrow">제품 선택</p><h2 id="plans-title">필요한 측정 방식에 맞게</h2><p>Basic은 낮은 요청량과 일반적인 사용을, Pro는 장시간 측정과 더 보수적인 정밀 후보 반영을 목표로 합니다.</p></div>
         <div class="plan-grid">
           <article class="plan-card"><div class="plan-top"><span class="plan-tag">BASIC</span><div class="price"><strong>무료</strong><small>기본형</small></div></div><h3>가볍고 안정적인<br>서버시간 확인</h3><ul><li>일반 사용을 위한 기본 표본 검증</li><li>낮은 요청량의 적응형 측정 정책</li><li>왕복 시간·합의·캐시·정지 응답 검사</li><li>30분 측정 세션</li><li>Windows 10 / 11 x64</li></ul><a class="button button-primary button-full js-basic-link" href="#download">Basic 무료 받기</a><p class="availability js-basic-status">Windows 10 / 11 x64</p></article>
-          <article class="plan-card pro-card"><div class="recommended">출시 초기 한정가</div><div class="plan-top"><span class="plan-tag">PRO</span><div class="price"><strong>$7</strong><small>1년 이용권</small></div></div><p class="launch-price-note"><span>현재 출시가</span><span>이후 $10 예정</span></p><h3>더 긴 관찰과<br>보수적인 정밀 측정</h3><ul><li>더 많은 초기 증거 · 세션 시간 제한 없음</li><li>더 촘촘한 확인과 빠른 재검증</li><li>강화된 캐시 방어와 응답 구조 분석</li><li>서로 다른 응답 경로와 시간 특성 구분</li><li>충분한 일관성이 있을 때만 정밀 후보 반영</li></ul><a class="button button-primary button-full js-pro-link" href="#" target="_blank" rel="noopener noreferrer">출시가 $7로 Pro 구매 <span aria-hidden="true">↗</span></a><p class="availability">일회성 결제 · 자동 갱신 없음 · 향후 신규 구매 가격 $10 예정</p></article>
+          <article class="plan-card pro-card"><div class="recommended">1년 라이선스</div><div class="plan-top"><span class="plan-tag">PRO</span><div class="price"><strong>$7</strong><small>1년 이용권</small></div></div><h3>더 긴 관찰과<br>보수적인 정밀 측정</h3><ul><li>더 많은 초기 증거 · 세션 시간 제한 없음</li><li>더 촘촘한 확인과 빠른 재검증</li><li>강화된 캐시 방어와 응답 구조 분석</li><li>서로 다른 응답 경로와 시간 특성 구분</li><li>충분한 일관성이 있을 때만 정밀 후보 반영</li></ul><a class="button button-primary button-full js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Pro 구매 — $7 / 1년 <span aria-hidden="true">↗</span></a><p class="availability">일회성 결제 · 자동 갱신 없음</p></article>
         </div>
-        <div class="comparison-wrap"><table><caption class="sr-only">DongClock Basic과 Pro 기능 비교</caption><thead><tr><th scope="col">기능</th><th scope="col">Basic</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">가격</th><td>무료</td><td><strong class="intro-price">출시 초기 $7</strong> / 이후 $10 예정 · 1년 이용권</td></tr><tr><th scope="row">초기 확인</th><td>기본 표본 수집</td><td>더 많은 증거 수집</td></tr><tr><th scope="row">측정 방식</th><td>일반 사용 중심의 안정적 추정</td><td>충분히 검증된 정밀 후보 반영</td></tr><tr><th scope="row">응답 구조 분석</th><td>기본 검증</td><td>더 세밀한 경로·시간 특성 구분</td></tr><tr><th scope="row">세션</th><td>30분</td><td>시간 제한 없음</td></tr><tr><th scope="row">캐시 정책</th><td>서버 친화적 재검증</td><td>강화된 캐시 방어</td></tr></tbody></table></div>
+        <div class="comparison-wrap"><table><caption class="sr-only">DongClock Basic과 Pro 기능 비교</caption><thead><tr><th scope="col">기능</th><th scope="col">Basic</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">가격</th><td>무료</td><td><strong>$7</strong> · 구매일로부터 1년</td></tr><tr><th scope="row">초기 확인</th><td>기본 표본 수집</td><td>더 많은 증거 수집</td></tr><tr><th scope="row">측정 방식</th><td>일반 사용 중심의 안정적 추정</td><td>충분히 검증된 정밀 후보 반영</td></tr><tr><th scope="row">응답 구조 분석</th><td>기본 검증</td><td>더 세밀한 경로·시간 특성 구분</td></tr><tr><th scope="row">세션</th><td>30분</td><td>시간 제한 없음</td></tr><tr><th scope="row">캐시 정책</th><td>서버 친화적 재검증</td><td>강화된 캐시 방어</td></tr></tbody></table></div>
       </div>
     </section>
+
+    <section class="section product-essentials" aria-labelledby="essentials-title"><div class="container"><div class="section-heading"><p class="eyebrow">구매 및 배포 안내</p><h2 id="essentials-title">구매 전에 알아둘 내용</h2></div><div class="product-detail-grid">
+      <article><span>PRO LICENSE</span><h3>구매일로부터 1년</h3><p>$7 일회성 결제이며 구독이나 자동 갱신이 아닙니다. Gumroad License Key를 사용합니다.</p><ul><li>최초 활성화 시 인터넷 연결 필요</li><li>이후 정기적인 라이선스 확인</li><li>일시적 연결 실패를 위한 제한적 유예 기간</li></ul></article>
+      <article><span>WINDOWS DELIVERY</span><h3>Portable과 Installer</h3><p>Windows 10 / 11 x64용으로 두 가지 배포 방식을 제공합니다.</p><ul><li><strong>Portable:</strong> 설치 없이 실행</li><li><strong>Installer:</strong> 일반적인 Windows 설치 방식</li></ul></article>
+      <article><span>SMARTSCREEN</span><h3>현재 배포판은 코드 서명되지 않았습니다</h3><p>현재 Windows 배포판은 Authenticode 코드 서명이 없어 SmartScreen 경고가 표시될 수 있습니다. 공식 링크와 파일명을 확인한 뒤 실행해 주세요.</p></article>
+    </div></div></section>
 
     <section class="section" id="limits" aria-labelledby="limits-title">
       <div class="container limits-grid">
         <div><p class="eyebrow">정확도와 한계 / 05</p><h2 id="limits-title">정확도에 대해<br>솔직하게</h2><p class="lead">DongClock은 원자시계, NTP 또는 PTP 계측기가 아닙니다.</p></div>
-        <div class="limits-list"><div><span>01</span><p><strong>HTTP Date는 기본적으로 1초 단위입니다.</strong> 화면의 밀리초는 서버가 밀리초를 보낸 결과가 아니라, 여러 구간의 합의와 단조 시계 진행으로 만들어진 추정값입니다.</p></div><div><span>02</span><p><strong>편도 지연을 직접 알 수 없습니다.</strong> 요청과 응답의 네트워크 지연은 비대칭일 수 있습니다.</p></div><div><span>03</span><p><strong>서버의 시계 자체가 틀릴 수 있습니다.</strong> 내부 일관성만으로 외부 UTC 참값과의 차이를 절대 판별할 수 없습니다.</p></div><div><span>04</span><p><strong>중간 장치가 Date를 만들 수 있습니다.</strong> 프록시나 CDN을 완벽히 식별한다고 주장하지 않습니다.</p></div><div><span>05</span><p><strong>고정된 ±X ms를 보장하지 않습니다.</strong> 결과는 서버, 네트워크, 캐시, 경로의 특성에 따라 달라집니다.</p></div></div>
+        <div class="limits-list"><div><span>01</span><p><strong>HTTP Date는 기본적으로 1초 단위입니다.</strong> 화면의 밀리초는 서버가 밀리초를 보낸 결과가 아니라, 여러 구간의 합의와 단조 시계 진행으로 만들어진 추정값입니다.</p></div><div><span>02</span><p><strong>편도 지연을 직접 알 수 없습니다.</strong> 요청과 응답의 네트워크 지연은 비대칭일 수 있습니다.</p></div><div><span>03</span><p><strong>서버의 시계 자체가 틀릴 수 있습니다.</strong> 내부 일관성만으로 외부 UTC 참값과의 차이를 절대 판별할 수 없습니다.</p></div><div><span>04</span><p><strong>중간 장치가 Date를 만들 수 있습니다.</strong> 프록시, CDN 또는 서로 다른 backend를 완벽히 식별한다고 주장하지 않습니다.</p></div><div><span>05</span><p><strong>고정된 ±X ms를 보장하지 않습니다.</strong> 결과는 서버, 네트워크, 캐시, 경로의 특성에 따라 달라집니다.</p></div><a class="text-link" href="accuracy/">정확도 및 한계 전문 보기 →</a></div>
       </div>
     </section>
 
@@ -193,15 +182,17 @@
       <details><summary>왜 여러 번 요청하나요?</summary><p>한 번의 Date 응답은 가능한 시차 범위만 제공합니다. 여러 요청의 구간과 왕복 시간을 비교해야 일관된 범위를 찾고 이상 표본을 구분할 수 있습니다.</p></details>
       <details><summary>서버에 부담을 주나요?</summary><p>측정이므로 HTTP 요청은 발생합니다. 다만 안정되면 간격을 늘리고 오류·제한 응답을 받으면 요청 빈도를 낮춰, 지속적으로 지나치게 자주 요청하는 방식을 피합니다.</p></details>
       <details><summary>Basic과 Pro의 차이는 무엇인가요?</summary><p>Basic은 30분 세션과 낮은 요청량을 중심으로 설계되었습니다. Pro는 세션 제한이 없고 더 많은 증거를 모으며, 응답 경로와 시간 특성을 더 세밀하게 구분해 충분히 검증된 정밀 후보만 반영합니다.</p></details>
-      <details><summary>Pro는 구독인가요?</summary><p>아닙니다. 출시 초기에는 $7를 한 번 결제하면 구매일 기준 1년 동안 사용합니다. 자동 갱신은 없으며, 이용자가 늘어나면 신규 구매 가격을 $10로 조정할 예정입니다. 만료 후 계속 사용하려면 그때의 판매 가격으로 새 라이선스를 구매합니다.</p></details>
+      <details><summary>Pro는 구독인가요?</summary><p>아닙니다. $7 일회성 결제로 구매일로부터 1년 동안 사용할 수 있습니다.</p></details>
+      <details><summary>자동 갱신이나 자동 결제가 있나요?</summary><p>없습니다. 1년 뒤 자동으로 결제되거나 갱신되지 않습니다. 계속 사용하려면 새 라이선스를 직접 구매해야 합니다.</p></details>
+      <details><summary>자동 클릭이나 구매 자동화 기능이 있나요?</summary><p>없습니다. DongClock은 서버시간을 측정하고 표시하는 도구이며 클릭·예약·구매를 자동으로 실행하지 않습니다.</p></details>
       <details><summary>Pro가 만료되면 어떻게 되나요?</summary><p>Pro 화면과 라이선스 관리는 계속 열 수 있지만 새 측정 시작은 제한됩니다. 데이터가 자동으로 삭제되지는 않습니다. 갱신 구매 후 새 키를 입력할 수 있습니다.</p></details>
       <details><summary>인터넷이 끊기면 Pro가 바로 막히나요?</summary><p>아닙니다. Gumroad 라이선스 키는 최초 활성화 때 온라인 확인이 필요하고, 이후 7일 간격으로 재확인합니다. Gumroad 연결이 일시적으로 실패하면 마지막 확인 시점부터 최대 14일의 유예 기간이 적용됩니다. 라이선스 만료일을 넘길 수는 없습니다.</p></details>
-      <details><summary>Windows SmartScreen이 표시될 수 있나요?</summary><p>초기 배포판은 Windows 디지털 서명이 적용되지 않을 수 있어 SmartScreen 경고가 표시될 수 있습니다. 다운로드 페이지의 배포 정보와 파일 이름을 확인해 주세요.</p></details>
+      <details><summary>Windows SmartScreen이 표시될 수 있나요?</summary><p>네. 현재 배포판은 Authenticode 코드 서명이 없어 Windows SmartScreen 경고가 표시될 수 있습니다. 공식 링크와 파일명을 확인한 뒤 실행해 주세요.</p></details>
     </div></div></section>
 
-    <section class="section download" id="download" aria-labelledby="download-title"><div class="container download-shell"><div><p class="eyebrow">다운로드</p><h2 id="download-title">서버가 보내는 시간을<br>더 차분하게 읽어보세요.</h2><p>Windows 10 / 11 x64 · DongClock Server Time 1.0.0</p></div><div class="download-actions"><div><span>DongClock Basic</span><strong>무료</strong><a class="button button-primary js-basic-link" href="#download">Basic 무료 받기</a><small class="js-basic-status">Windows 10 / 11 x64</small></div><div><span>DongClock Pro · 출시 초기 한정가</span><strong>$7 / 1년</strong><a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad에서 구매 <span aria-hidden="true">↗</span></a><small>향후 $10 예정 · 일회성 결제 · 자동 갱신 없음</small></div></div></div></section>
+    <section class="section download" id="download" aria-labelledby="download-title"><div class="container download-shell"><div><p class="eyebrow">다운로드</p><h2 id="download-title">서버가 보내는 시간을<br>더 차분하게 읽어보세요.</h2><p>Windows 10 / 11 x64 · DongClock Server Time 1.0.0</p><p class="download-note">Portable(무설치)과 Installer(일반 설치) 제공 · 현재 코드 서명 없음 · SmartScreen 경고 가능</p></div><div class="download-actions"><div><span>DongClock Basic</span><strong>무료</strong><a class="button button-primary js-basic-link" href="#download">Basic 무료 받기</a><small class="js-basic-status">Portable + Installer</small></div><div><span>DongClock Pro</span><strong>$7 / 1년</strong><a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad에서 구매 <span aria-hidden="true">↗</span></a><small>일회성 결제 · 자동 갱신 없음 · Portable + Installer</small></div></div></div></section>
   </main>
 
-  <footer><div class="container footer-grid"><div class="brand"><img src="assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></div><p>Windows용 정밀 지향 HTTP 서버시간 측정 도구.</p><div class="footer-meta"><span>버전 <span class="js-version">1.0.0</span></span><span>Windows 10 / 11 x64</span><a class="js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad <span aria-hidden="true">↗</span></a><span>GitHub Pages 지원</span></div></div></footer>
+  <footer><div class="container footer-grid"><div class="brand"><img src="assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></div><p>Windows용 정밀 지향 HTTP 서버시간 측정 도구.</p><div class="footer-content"><nav class="legal-links" aria-label="법적 및 제품 고지"><a href="terms/">최종 사용자 라이선스 계약</a><a href="privacy/">개인정보 처리방침</a><a href="refund/">환불정책</a><a href="accuracy/">정확도 및 한계</a></nav><div class="footer-meta"><span>버전 <span class="js-version">1.0.0</span></span><span>Windows 10 / 11 x64</span><a class="js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad <span aria-hidden="true">↗</span></a></div><p class="seller-line">© 2026 DongClock · 판매자/개발자: 김동하 · 문의: <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></p></div></div></footer>
 </body>
 </html>
