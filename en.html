@@ -17,7 +17,7 @@
   <link rel="alternate" hreflang="en" href="en.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
   <link rel="icon" type="image/png" href="assets/dongclock-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260818-desktop-balance">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
       <nav id="site-nav" aria-label="Primary navigation">
         <a href="#method">How it works</a>
         <a href="#policy">Request policy</a>
-        <a class="desktop-nav-link" href="#plans">Basic / Pro</a>
+        <a class="desktop-nav-link" href="#plans-quick">Basic / Pro</a>
         <a class="mobile-nav-link" href="#plans-quick">Basic / Pro</a>
         <a href="#limits">Accuracy</a>
         <a href="#faq">FAQ</a>
@@ -80,14 +80,18 @@
       </div>
     </section>
 
-    <section class="mobile-only mobile-quickstart" id="plans-quick" aria-labelledby="plans-quick-title"><div class="container">
+    <section class="mobile-quickstart" id="plans-quick" aria-labelledby="plans-quick-title"><div class="container">
+      <div class="quickstart-layout">
       <div class="mobile-section-heading"><p class="eyebrow">QUICK CHOICE</p><h2 id="plans-quick-title">Free Basic or<br>deeper Pro</h2><p>Choose an edition first, then open the technical detail only when you need it.</p></div>
       <div class="mobile-plan-grid">
         <article><div><span>BASIC</span><strong>Free</strong></div><h3>General server-time checks</h3><ul><li>Low request volume</li><li>Core sample validation</li><li>30-minute session</li></ul><a class="button button-primary js-basic-link" href="#download">Download Free</a></article>
         <article class="is-pro"><div><span>PRO</span><strong>$7 / 1 year</strong></div><h3>More conservative validation</h3><ul><li>Advanced state decisions</li><li>Denser rechecks</li><li>No session limit</li></ul><a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Get Pro <span aria-hidden="true">↗</span></a></article>
       </div>
+      </div>
+      <div class="quickstart-details">
       <details class="mobile-details"><summary>Compare Basic / Pro in detail</summary><div class="mobile-detail-body"><ul><li><strong>Basic:</strong> stable estimation for general use, baseline response checks, and server-friendly revalidation</li><li><strong>Pro:</strong> more initial evidence, path and timing separation, stronger cache defenses, and additional checks for large changes</li><li><strong>Both:</strong> Windows 10 / 11 x64 with Portable and Installer formats</li></ul></div></details>
       <details class="mobile-details"><summary>License and delivery details</summary><div class="mobile-detail-body"><ul><li>Pro is a one-time $7 payment, valid for one year, with no automatic renewal</li><li>Gumroad License Key, initial online activation, and periodic revalidation</li><li>Current builds are not Authenticode-signed, so SmartScreen may warn</li></ul></div></details>
+      </div>
     </div></section>
 
     <section class="section" id="method" aria-labelledby="method-title">
@@ -201,6 +205,6 @@
     <section class="section download" id="download" aria-labelledby="download-title"><div class="container download-shell"><div><p class="eyebrow">DOWNLOAD</p><h2 id="download-title">Read the time a server sends<br>with more care.</h2><p>Windows 10 / 11 x64 · DongClock Server Time 1.0.0</p><p class="download-note">Portable (no install) and Installer provided · currently unsigned · SmartScreen warning possible</p></div><div class="download-actions"><div><span>DongClock Basic</span><strong>Free</strong><a class="button button-primary js-basic-link" href="#download">Download Free</a><small class="js-basic-status">Portable + Installer</small></div><div><span>DongClock Pro</span><strong>$7 / 1 year</strong><a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Buy on Gumroad <span aria-hidden="true">↗</span></a><small>One-time payment · no automatic renewal · Portable + Installer</small></div></div></div></section>
   </main>
 
-  <footer><div class="container footer-grid"><div class="brand"><img src="assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></div><p>Precision-oriented HTTP server-time measurement for Windows.</p><div class="footer-content"><nav class="legal-links" aria-label="Legal and product notices"><a href="terms/#en">End User License Agreement</a><a href="privacy/#en">Privacy Policy</a><a href="refund/#en">Refund Policy</a><a href="accuracy/#en">Accuracy &amp; Limitations</a></nav><div class="footer-meta"><span>v<span class="js-version">1.0.0</span></span><span>Windows 10 / 11 x64</span><a class="js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad <span aria-hidden="true">↗</span></a></div><p class="seller-line">© 2026 DongClock · Seller / Developer: DongHa KIM · Support: <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></p></div></div></footer>
+  <footer><div class="container footer-grid"><div class="brand"><img src="assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></div><p>Precision-oriented HTTP server-time measurement for Windows.</p><div class="footer-content"><nav class="legal-links" aria-label="Legal and product notices"><a href="terms/#en">End User License Agreement</a><a href="privacy/#en">Privacy Policy</a><a href="refund/#en">Refund Policy</a><a href="accuracy/#en">Accuracy &amp; Limitations</a><a href="open-source/#en">Open Source Licenses</a></nav><div class="footer-meta"><span>v<span class="js-version">1.0.0</span></span><span>Windows 10 / 11 x64</span><a class="js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Gumroad <span aria-hidden="true">↗</span></a></div><p class="seller-line">© 2026 DongClock · Seller / Developer: DongHa KIM · Support: <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></p></div></div></footer>
 </body>
 </html>
