@@ -32,7 +32,8 @@
       <nav id="site-nav" aria-label="Primary navigation">
         <a href="#method">How it works</a>
         <a href="#policy">Request policy</a>
-        <a href="#plans">Basic / Pro</a>
+        <a class="desktop-nav-link" href="#plans">Basic / Pro</a>
+        <a class="mobile-nav-link" href="#plans-quick">Basic / Pro</a>
         <a href="#limits">Accuracy</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -46,7 +47,8 @@
         <div class="hero-copy">
           <p class="eyebrow"><span class="status-dot"></span> WINDOWS 10 / 11 · x64</p>
           <h1 id="hero-title">Measure the time a server reports<br><em>with more care.</em></h1>
-          <p class="hero-lead">DongClock Server Time does not treat a single HTTP response as ground truth. It compares round-trip time and consistency across multiple observations to estimate server time within the information HTTP can actually provide.</p>
+          <p class="hero-lead desktop-copy">DongClock Server Time does not treat a single HTTP response as ground truth. It compares round-trip time and consistency across multiple observations to estimate server time within the information HTTP can actually provide.</p>
+          <p class="hero-lead mobile-only">A Windows tool that estimates server time from repeated HTTP responses and network timing.</p>
           <div class="cta-row">
             <a class="button button-primary js-basic-link" href="#download" aria-describedby="basic-availability">Download Basic — Free</a>
             <a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Pro — $7 / 1 year <span aria-hidden="true">↗</span></a>
@@ -78,13 +80,25 @@
       </div>
     </section>
 
+    <section class="mobile-only mobile-quickstart" id="plans-quick" aria-labelledby="plans-quick-title"><div class="container">
+      <div class="mobile-section-heading"><p class="eyebrow">QUICK CHOICE</p><h2 id="plans-quick-title">Free Basic or<br>deeper Pro</h2><p>Choose an edition first, then open the technical detail only when you need it.</p></div>
+      <div class="mobile-plan-grid">
+        <article><div><span>BASIC</span><strong>Free</strong></div><h3>General server-time checks</h3><ul><li>Low request volume</li><li>Core sample validation</li><li>30-minute session</li></ul><a class="button button-primary js-basic-link" href="#download">Download Free</a></article>
+        <article class="is-pro"><div><span>PRO</span><strong>$7 / 1 year</strong></div><h3>More conservative validation</h3><ul><li>Advanced state decisions</li><li>Denser rechecks</li><li>No session limit</li></ul><a class="button button-secondary js-pro-link" href="#" target="_blank" rel="noopener noreferrer">Get Pro <span aria-hidden="true">↗</span></a></article>
+      </div>
+      <details class="mobile-details"><summary>Compare Basic / Pro in detail</summary><div class="mobile-detail-body"><ul><li><strong>Basic:</strong> stable estimation for general use, baseline response checks, and server-friendly revalidation</li><li><strong>Pro:</strong> more initial evidence, path and timing separation, stronger cache defenses, and additional checks for large changes</li><li><strong>Both:</strong> Windows 10 / 11 x64 with Portable and Installer formats</li></ul></div></details>
+      <details class="mobile-details"><summary>License and delivery details</summary><div class="mobile-detail-body"><ul><li>Pro is a one-time $7 payment, valid for one year, with no automatic renewal</li><li>Gumroad License Key, initial online activation, and periodic revalidation</li><li>Current builds are not Authenticode-signed, so SmartScreen may warn</li></ul></div></details>
+    </div></section>
+
     <section class="section" id="method" aria-labelledby="method-title">
       <div class="container">
         <div class="section-heading split-heading">
           <div><p class="eyebrow">MEASUREMENT / 01</p><h2 id="method-title">Follow the measurement flow,<br>not a single response.</h2></div>
           <p>DongClock observes the HTTP time sent by the server together with network round-trip time, then displays an estimate only after multiple measurements are consistent.</p>
         </div>
-        <ol class="measurement-flow" aria-label="DongClock server-time measurement flow">
+        <ul class="mobile-only mobile-key-points"><li>Read HTTP Date with round-trip time</li><li>Compare consistency across measurements</li><li>Exclude suspicious responses</li></ul>
+        <details class="mobile-only mobile-details"><summary>See the measurement flow</summary><div class="mobile-detail-body"><ol class="mobile-flow"><li>Enter a website address</li><li>Send HTTP request and receive server time</li><li>Observe network round-trip time</li><li>Compare results and exclude anomalies</li><li>Estimate a consistent server time</li></ol><p>HTTP Date usually has one-second resolution, and one-way network delay cannot be observed directly.</p></div></details>
+        <ol class="measurement-flow desktop-detail" aria-label="DongClock server-time measurement flow">
           <li><span>01</span><strong>Enter a website</strong><small>Choose an HTTP or HTTPS target.</small></li>
           <li><span>02</span><strong>Send HTTP request</strong><small>Ask the target server for a response.</small></li>
           <li><span>03</span><strong>Receive server time</strong><small>Read the response Date information.</small></li>
@@ -93,27 +107,29 @@
           <li><span>06</span><strong>Exclude anomalies</strong><small>Separate suspicious latency, cache, and response behavior.</small></li>
           <li><span>07</span><strong>Estimate server time</strong><small>Display a result when the remaining evidence agrees.</small></li>
         </ol>
-        <details class="technical-note"><summary>A little more technical detail</summary><p>HTTP Date usually has one-second resolution, and one-way network delay cannot be observed directly. DongClock uses possible time ranges and agreement across observations without presenting internal formulas or thresholds as an accuracy guarantee.</p></details>
+        <details class="technical-note desktop-detail"><summary>A little more technical detail</summary><p>HTTP Date usually has one-second resolution, and one-way network delay cannot be observed directly. DongClock uses possible time ranges and agreement across observations without presenting internal formulas or thresholds as an accuracy guarantee.</p></details>
       </div>
     </section>
 
     <section class="section section-muted" id="validation" aria-labelledby="validation-title">
       <div class="container">
         <div class="section-heading"><p class="eyebrow">VALIDATION / 02</p><h2 id="validation-title">Prefer honest uncertainty<br>over a smaller number.</h2><p>A new observation does not automatically replace the current estimate. DongClock also checks response structure and continuity.</p></div>
-        <div class="feature-grid">
+        <ul class="mobile-only mobile-key-points"><li>Check RTT and sample agreement</li><li>Separate cache and stale responses</li><li>Require more evidence for large changes</li></ul>
+        <details class="mobile-only mobile-details"><summary>See validation principles</summary><div class="mobile-detail-body"><ul><li>Separate abnormal RTT and observations that do not agree.</li><li>Check repeated, non-advancing, or regressing Date behavior.</li><li>Advance a validated basis from the PC's monotonic clock.</li></ul><p><strong>DongClock does not invent information HTTP never provided.</strong></p></div></details>
+        <div class="feature-grid desktop-detail">
           <article><span class="feature-index">01</span><h3>RTT & consensus</h3><p>Observations beyond robust RTT limits are filtered, and only sufficiently agreeing intervals contribute to the estimate.</p></article>
           <article><span class="feature-index">02</span><h3>Cache & stale checks</h3><p>Explicit cache responses, repeated non-advancing dates, and Date regression are treated as distinct warning signals.</p></article>
           <article><span class="feature-index">03</span><h3>Conservative changes</h3><p>Large offset changes need additional consistent evidence. Pro applies precision candidates only after layered checks pass.</p></article>
           <article><span class="feature-index">04</span><h3>Monotonic anchor</h3><p>A validated offset advances from the PC's monotonic clock instead of rebuilding time from the operating-system wall clock every frame.</p></article>
         </div>
-        <div class="callout"><span>CORE PRINCIPLE</span><p>DongClock does not invent information HTTP never provided.<br><strong>It is designed to avoid premature conclusions with the evidence that is available.</strong></p></div>
+        <div class="callout desktop-detail"><span>CORE PRINCIPLE</span><p>DongClock does not invent information HTTP never provided.<br><strong>It is designed to avoid premature conclusions with the evidence that is available.</strong></p></div>
       </div>
     </section>
 
     <section class="section" id="policy" aria-labelledby="policy-title">
       <div class="container policy-grid">
-        <div class="policy-copy"><p class="eyebrow">SERVER-FRIENDLY / 03</p><h2 id="policy-title">Server-friendly<br>by design.</h2><p class="lead">Measure when needed, then reduce request frequency when stable.</p><p>DongClock gathers baseline evidence first, relaxes the interval when stable, and waits longer after errors or rate-limit responses.</p><div class="policy-note">HTTP measurement cannot create zero load. Please check the target service's terms and permitted use.</div></div>
-        <div class="scheduler" aria-label="Basic and Pro adaptive request policy comparison">
+        <div class="policy-copy"><p class="eyebrow">SERVER-FRIENDLY / 03</p><h2 id="policy-title">Server-friendly<br>by design.</h2><p class="lead">Measure when needed, then reduce request frequency when stable.</p><p class="desktop-detail">DongClock gathers baseline evidence first, relaxes the interval when stable, and waits longer after errors or rate-limit responses.</p><ul class="mobile-only mobile-key-points"><li>Measure first to build a baseline</li><li>Increase intervals after stability</li><li>Wait longer after errors or rate limits</li></ul><div class="policy-note desktop-detail">HTTP measurement cannot create zero load. Please check the target service's terms and permitted use.</div><details class="mobile-only mobile-details"><summary>See request-policy detail</summary><div class="mobile-detail-body"><p>Basic prioritizes low request volume; Pro prioritizes more evidence and faster rechecks. Both reduce request frequency after the target becomes stable.</p><p>HTTP traffic cannot create zero load. Check the target service's terms and permitted use.</p></div></details></div>
+        <div class="scheduler desktop-detail" aria-label="Basic and Pro adaptive request policy comparison">
           <div class="scheduler-head"><span>ADAPTIVE REQUEST POLICY</span><span>Shorter intervals mean more frequent checks</span></div>
           <div class="schedule-row schedule-comparison">
             <div class="schedule-product"><strong>Basic</strong><small>Low-load measurement</small></div>
@@ -131,16 +147,16 @@
 
     <section class="section continuity" aria-labelledby="continuity-title">
       <div class="container continuity-grid">
-        <ol class="continuity-visual" aria-label="Three steps after measurement continuity is interrupted">
+        <ol class="continuity-visual desktop-detail" aria-label="Three steps after measurement continuity is interrupted">
           <li><span class="step-number">1</span><small>Normal measurement</small><strong>Collect observations<br>and estimate time</strong></li>
           <li class="interrupted"><span class="step-number">2</span><small>Sleep · long pause</small><strong>Measurement<br>continuity is lost</strong></li>
           <li class="reacquire"><span class="step-number">3</span><small>Measure again</small><strong>Exclude old evidence<br>and start fresh</strong></li>
         </ol>
-        <div><p class="eyebrow">CONTINUITY / 04</p><h2 id="continuity-title">After sleep, do not blindly continue<br>the previous estimate.</h2><p>After sleep or a long interruption, old observations may no longer represent the current server path. DongClock does not mix that evidence into the new measurement; it builds a fresh basis from new observations.</p><details><summary>Technical detail</summary><p>If the scheduled measurement is delayed beyond an allowed range, or PC clock continuity becomes unreliable, the prior estimator state is cleared and measurement restarts from fresh observations. Session identity and cumulative statistics remain, but old consensus evidence does not carry forward.</p></details></div>
+        <div><p class="eyebrow">CONTINUITY / 04</p><h2 id="continuity-title"><span class="desktop-copy">After sleep, do not blindly continue<br>the previous estimate.</span><span class="mobile-only">After a long pause,<br>check again.</span></h2><p class="desktop-copy">After sleep or a long interruption, old observations may no longer represent the current server path. DongClock does not mix that evidence into the new measurement; it builds a fresh basis from new observations.</p><p class="mobile-only mobile-lead">After sleep or a long interruption, DongClock discards the old timing basis and checks again with fresh observations.</p><details class="desktop-detail"><summary>Technical detail</summary><p>If the scheduled measurement is delayed beyond an allowed range, or PC clock continuity becomes unreliable, the prior estimator state is cleared and measurement restarts from fresh observations. Session identity and cumulative statistics remain, but old consensus evidence does not carry forward.</p></details><details class="mobile-only mobile-details"><summary>See technical detail</summary><div class="mobile-detail-body"><ol class="mobile-flow"><li>Normal measurement</li><li>Sleep or a long pause breaks continuity</li><li>Exclude old evidence and measure again</li></ol><p>The session and cumulative statistics remain, but old consensus evidence does not carry forward.</p></div></details></div>
       </div>
     </section>
 
-    <section class="section section-muted" id="plans" aria-labelledby="plans-title">
+    <section class="section section-muted desktop-plans" id="plans" aria-labelledby="plans-title">
       <div class="container">
         <div class="section-heading centered"><p class="eyebrow">CHOOSE YOUR EDITION</p><h2 id="plans-title">Choose the measurement style you need</h2><p>Basic is designed for general use and low request volume. Pro supports longer observation and more conservative precision-candidate handling.</p></div>
         <div class="plan-grid">
@@ -151,7 +167,7 @@
       </div>
     </section>
 
-    <section class="section product-essentials" aria-labelledby="essentials-title"><div class="container"><div class="section-heading"><p class="eyebrow">PURCHASE &amp; DELIVERY</p><h2 id="essentials-title">What to know before purchase</h2></div><div class="product-detail-grid">
+    <section class="section product-essentials desktop-detail-section" aria-labelledby="essentials-title"><div class="container"><div class="section-heading"><p class="eyebrow">PURCHASE &amp; DELIVERY</p><h2 id="essentials-title">What to know before purchase</h2></div><div class="product-detail-grid">
       <article><span>PRO LICENSE</span><h3>One year from purchase</h3><p>Pro is a one-time $7 payment, not a subscription or automatic renewal. It uses a Gumroad License Key.</p><ul><li>Internet required for first activation</li><li>Periodic license revalidation afterward</li><li>Limited grace period for temporary connection failures</li></ul></article>
       <article><span>WINDOWS DELIVERY</span><h3>Portable and Installer</h3><p>Both formats are provided for Windows 10 / 11 x64.</p><ul><li><strong>Portable:</strong> run without installation</li><li><strong>Installer:</strong> standard Windows installation</li></ul></article>
       <article><span>SMARTSCREEN</span><h3>Current builds are not code-signed</h3><p>Current Windows builds do not have an Authenticode code signature, so SmartScreen may show a warning. Verify the official link and file name before running the app.</p></article>
@@ -160,13 +176,13 @@
     <section class="section" id="limits" aria-labelledby="limits-title">
       <div class="container limits-grid">
         <div><p class="eyebrow">ACCURACY & LIMITS / 05</p><h2 id="limits-title">Be honest<br>about accuracy.</h2><p class="lead">DongClock is not an atomic clock, NTP client, or PTP instrument.</p></div>
-        <div class="limits-list"><div><span>01</span><p><strong>HTTP Date normally has one-second resolution.</strong> Displayed milliseconds come from interval agreement and monotonic progression, not from a millisecond timestamp supplied by the server.</p></div><div><span>02</span><p><strong>One-way delay cannot be observed directly.</strong> Request and response paths may be asymmetric.</p></div><div><span>03</span><p><strong>The server clock itself may be wrong.</strong> Internal consistency cannot certify absolute agreement with true UTC.</p></div><div><span>04</span><p><strong>An intermediary may generate Date.</strong> DongClock does not claim perfect proxy, CDN, or differing-backend identification.</p></div><div><span>05</span><p><strong>No fixed ±X ms guarantee.</strong> Results depend on the server, network, cache behavior, and path.</p></div><a class="text-link" href="accuracy/#en">Read the full Accuracy &amp; Limitations notice →</a></div>
+        <div class="limits-list"><div><span>01</span><p><strong>HTTP Date normally has one-second resolution.</strong> Displayed milliseconds come from interval agreement and monotonic progression, not from a millisecond timestamp supplied by the server.</p></div><div><span>02</span><p><strong>One-way delay cannot be observed directly.</strong> Request and response paths may be asymmetric.</p></div><div><span>03</span><p><strong>The server clock itself may be wrong.</strong> Internal consistency cannot certify absolute agreement with true UTC.</p></div><div class="mobile-limit-detail"><span>04</span><p><strong>An intermediary may generate Date.</strong> DongClock does not claim perfect proxy, CDN, or differing-backend identification.</p></div><div class="mobile-limit-detail"><span>05</span><p><strong>No fixed ±X ms guarantee.</strong> Results depend on the server, network, cache behavior, and path.</p></div><a class="text-link" href="accuracy/#en">Read the full Accuracy &amp; Limitations notice →</a></div>
       </div>
     </section>
 
     <section class="section use-cases" aria-labelledby="use-title"><div class="container"><div class="section-heading"><p class="eyebrow">PRACTICAL USE</p><h2 id="use-title">A tool for observing time</h2></div><div class="use-grid"><span>Ticketing and reservation server time</span><span>Web-service event start times</span><span>Web-server Date header comparison</span><span>Server response timing observation</span></div><p class="plain-note">DongClock measures and displays time. It does not provide automatic clicking or purchase automation.</p></div></section>
 
-    <section class="section app-structure" aria-labelledby="structure-title"><div class="container structure-grid"><div class="app-shot"><img src="assets/screenshots/basic-app.png" alt="DongClock Basic server address entry screen" width="775" height="559" loading="lazy"></div><div><p class="eyebrow">WINDOWS APP / 06</p><h2 id="structure-title">The interface and measurement engine<br>have separate responsibilities.</h2><p>DongClock is a Tauri 2 application for Windows x64. The interface handles input and presentation; the Rust engine owns network requests, measurement state, validation, and adaptive scheduling.</p><div class="layer-list"><div><span>UI</span><p><strong>WebView interface</strong>Server address, settings, measurement state, and time display.</p></div><div><span>CORE</span><p><strong>Rust measurement engine</strong>HTTP probes, interval estimation, validation, and the monotonic anchor.</p></div><div><span>GUARD</span><p><strong>Network safety checks</strong>Allows HTTP/HTTPS, blocks local and reserved targets, and revalidates every redirect.</p></div></div></div></div></section>
+    <section class="section app-structure" aria-labelledby="structure-title"><div class="container structure-grid"><div class="app-shot"><img src="assets/screenshots/basic-app.png" alt="DongClock Basic server address entry screen" width="775" height="559" loading="lazy"></div><div><p class="eyebrow">WINDOWS APP / 06</p><h2 id="structure-title">The interface and measurement engine<br>have separate responsibilities.</h2><p>DongClock is a Tauri 2 application for Windows x64. The interface handles input and presentation; the Rust engine owns network requests, measurement state, validation, and adaptive scheduling.</p><details class="mobile-only mobile-details"><summary>See app architecture</summary><div class="mobile-detail-body"><ul><li>WebView UI: address input, settings, and status</li><li>Rust engine: HTTP probes, interval estimation, and validation</li><li>Network guard: blocks local/reserved targets and revalidates redirects</li></ul></div></details><div class="layer-list desktop-detail"><div><span>UI</span><p><strong>WebView interface</strong>Server address, settings, measurement state, and time display.</p></div><div><span>CORE</span><p><strong>Rust measurement engine</strong>HTTP probes, interval estimation, validation, and the monotonic anchor.</p></div><div><span>GUARD</span><p><strong>Network safety checks</strong>Allows HTTP/HTTPS, blocks local and reserved targets, and revalidates every redirect.</p></div></div></div></div></section>
 
     <section class="section section-muted" id="faq" aria-labelledby="faq-title"><div class="container faq-grid"><div><p class="eyebrow">FAQ / 07</p><h2 id="faq-title">Questions,<br>answered clearly.</h2><p>Product behavior and purchase terms without hidden claims.</p></div><div class="faq-list">
       <details><summary>Is DongClock an NTP program?</summary><p>No. DongClock observes the target web server's HTTP Date header. It does not use standard NTP/PTP measurement or an external atomic-clock reference.</p></details>
