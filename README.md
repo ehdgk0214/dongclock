@@ -16,6 +16,9 @@ dongclock-site/
 ├─ open-source/THIRD-PARTY-NOTICES.txt
 ├─ GUMROAD-LEGAL-COPY.md
 ├─ CNAME
+├─ favicon.ico
+├─ favicon-48x48.png
+├─ apple-touch-icon.png
 ├─ sitemap.xml
 ├─ robots.txt
 ├─ styles.css
