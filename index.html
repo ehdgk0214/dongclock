@@ -4,21 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0e0f">
-  <title>DongClock Server Time — HTTP 서버시간 측정 도구 for Windows</title>
-  <meta name="description" content="DongClock Server Time은 HTTP Date와 왕복 시간, 다중 표본 검증을 이용해 서버시간을 신중하게 측정하는 Windows 도구입니다.">
+  <title>DongClock Server Time | 서버시간 측정·확인 프로그램</title>
+  <meta name="description" content="웹사이트의 HTTP 응답을 분석해 서버시간을 측정·확인하는 Windows 프로그램 DongClock Server Time. 티켓팅, 수강신청, 예약 사이트의 시간을 여러 표본과 네트워크 지연을 바탕으로 추정합니다.">
   <link rel="canonical" href="https://ehdgk0214.github.io/dongclock/">
-  <meta property="og:title" content="DongClock Server Time — HTTP 서버시간 측정 도구 for Windows">
-  <meta property="og:description" content="서버가 알려주는 시간을 더 신중하게 측정합니다.">
+  <meta property="og:title" content="DongClock Server Time | 서버시간 측정·확인 프로그램">
+  <meta property="og:description" content="웹사이트의 HTTP 응답과 네트워크 지연을 바탕으로 서버시간을 측정·확인하는 Windows 프로그램입니다.">
   <meta property="og:image" content="https://ehdgk0214.github.io/dongclock/assets/dongclock-icon.png">
   <meta property="og:url" content="https://ehdgk0214.github.io/dongclock/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DongClock Server Time">
+  <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary">
-  <link rel="alternate" hreflang="ko" href="index.html">
-  <link rel="alternate" hreflang="en" href="en.html">
-  <link rel="alternate" hreflang="x-default" href="index.html">
+  <meta name="twitter:title" content="DongClock Server Time | 서버시간 측정·확인 프로그램">
+  <meta name="twitter:description" content="웹사이트의 HTTP 응답과 네트워크 지연을 바탕으로 서버시간을 측정·확인하는 Windows 프로그램입니다.">
+  <meta name="twitter:image" content="https://ehdgk0214.github.io/dongclock/assets/dongclock-icon.png">
+  <link rel="alternate" hreflang="ko" href="https://ehdgk0214.github.io/dongclock/">
+  <link rel="alternate" hreflang="en" href="https://ehdgk0214.github.io/dongclock/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://ehdgk0214.github.io/dongclock/">
   <link rel="icon" type="image/png" href="assets/dongclock-icon.png">
   <link rel="stylesheet" href="styles.css?v=20260818-desktop-balance">
   <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DongClock Server Time",
+    "url": "https://ehdgk0214.github.io/dongclock/",
+    "description": "웹사이트의 HTTP 응답, 왕복 시간, 여러 표본을 바탕으로 서버시간을 측정하고 확인하는 Windows 프로그램입니다.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "softwareVersion": "1.0.0",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "DongClock Basic",
+        "price": "0",
+        "priceCurrency": "USD",
+        "url": "https://4714124465239.gumroad.com/l/clockbasic"
+      },
+      {
+        "@type": "Offer",
+        "name": "DongClock Pro 1-year license",
+        "price": "7",
+        "priceCurrency": "USD",
+        "url": "https://4714124465239.gumroad.com/l/clockpro"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -46,7 +79,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow"><span class="status-dot"></span> WINDOWS 10 / 11 · x64</p>
-          <h1 id="hero-title">서버가 알려주는 시간을<br><em>더 신중하게</em> 측정합니다.</h1>
+          <h1 id="hero-title">웹사이트 서버시간을<br><em>더 신중하게</em> 측정합니다.</h1>
           <p class="hero-lead desktop-copy">DongClock Server Time은 HTTP 응답 하나를 곧바로 정답으로 표시하지 않습니다. RTT와 여러 표본의 일관성을 살펴, 관측 가능한 범위 안에서 안정적인 서버시간을 추정합니다.</p>
           <p class="hero-lead mobile-only">웹 서버의 HTTP 응답과 네트워크 시간을 여러 번 관찰해 서버시간을 추정하는 Windows 도구입니다.</p>
           <div class="cta-row">
@@ -192,7 +225,7 @@
       </div>
     </section>
 
-    <section class="section use-cases" aria-labelledby="use-title"><div class="container"><div class="section-heading"><p class="eyebrow">활용 예시</p><h2 id="use-title">시간을 관찰하는 도구</h2></div><div class="use-grid"><span>티켓팅·예약 사이트 서버시간 확인</span><span>웹서비스 이벤트 시작 시각 관찰</span><span>웹서버 Date 헤더 비교</span><span>서버 응답 시간 관찰</span></div><p class="plain-note">DongClock은 시간을 측정하고 표시하는 도구이며, 자동 클릭이나 구매 자동화 기능을 제공하지 않습니다.</p></div></section>
+    <section class="section use-cases" aria-labelledby="use-title"><div class="container"><div class="section-heading"><p class="eyebrow">활용 예시</p><h2 id="use-title">시간을 관찰하는 도구</h2></div><div class="use-grid"><span>티켓팅·예약 사이트 서버시간 확인</span><span>수강신청 서버시간 확인</span><span>웹서비스 이벤트 시작 시각 관찰</span><span>HTTP Date 헤더 비교</span></div><p class="plain-note">DongClock은 시간을 측정하고 표시하는 도구이며, 자동 클릭이나 구매 자동화 기능을 제공하지 않습니다.</p></div></section>
 
     <section class="section app-structure" aria-labelledby="structure-title"><div class="container structure-grid"><div class="app-shot"><img src="assets/screenshots/basic-app.png" alt="DongClock Basic의 서버 주소 입력 화면" width="775" height="559" loading="lazy"></div><div><p class="eyebrow">WINDOWS 앱 / 06</p><h2 id="structure-title">화면과 측정 엔진을<br>분리했습니다.</h2><p>DongClock은 Tauri 2 기반 Windows x64 앱입니다. 화면은 입력과 상태 표시를 담당하고, 권위 있는 측정 상태·네트워크 요청·표본 검증·요청 일정 관리는 Rust 엔진에서 처리합니다.</p><details class="mobile-only mobile-details"><summary>앱 구조 자세히 보기</summary><div class="mobile-detail-body"><ul><li>WebView 화면: 주소 입력, 설정과 상태 표시</li><li>Rust 엔진: HTTP 요청, 구간 추정과 검증</li><li>네트워크 보호: 로컬·사설·예약 주소 차단과 리다이렉트 재검증</li></ul></div></details><div class="layer-list desktop-detail"><div><span>화면</span><p><strong>WebView 화면</strong>서버 주소 입력, 설정, 측정 상태와 시간을 표시합니다.</p></div><div><span>엔진</span><p><strong>Rust 측정 엔진</strong>HTTP 요청, 구간 추정, 검증과 단조 시계 기준을 담당합니다.</p></div><div><span>보호</span><p><strong>네트워크 안전 검사</strong>http/https만 허용하고 로컬·사설·예약 주소를 차단하며 경로가 바뀔 때마다 다시 검증합니다.</p></div></div></div></div></section>
 

@@ -12,9 +12,10 @@ dongclock-site/
 ├─ privacy/index.html
 ├─ refund/index.html
 ├─ accuracy/index.html
+├─ open-source/index.html
+├─ open-source/THIRD-PARTY-NOTICES.txt
 ├─ GUMROAD-LEGAL-COPY.md
 ├─ sitemap.xml
-├─ robots.txt
 ├─ styles.css
 ├─ script.js
 ├─ README.md
@@ -27,7 +28,7 @@ dongclock-site/
 - `index.html`: 한국어 기본 페이지
 - `en.html`: 영어 페이지
 - 두 페이지의 헤더에서 언어를 전환할 수 있습니다.
-- 네 법적/제품 고지 페이지는 각 URL 안에 한국어와 영어를 모두 포함하며, 언어 링크는 같은 문서의 해당 언어 섹션으로 이동합니다.
+- 다섯 법적/제품 고지 페이지는 각 URL 안에 한국어와 영어를 모두 포함하며, 언어 링크는 같은 문서의 해당 언어 섹션으로 이동합니다.
 - `GUMROAD-LEGAL-COPY.md`: Basic/Pro Gumroad 상품 설명과 정책에 붙여 넣을 수 있는 양언어 문구입니다.
 
 ## 자주 바꾸는 설정
@@ -73,6 +74,10 @@ python -m http.server 8000
 2. **Settings → Pages**에서 배포 branch와 `/docs`를 선택합니다.
 
 사이트는 상대 경로만 사용하므로 프로젝트 Pages 경로(`username.github.io/repository/`)에서도 동작합니다.
+
+### robots.txt 주의
+
+GitHub Pages project site의 `robots.txt`는 저장소 하위 경로가 아니라 호스트 루트(`https://ehdgk0214.github.io/robots.txt`)에서만 유효합니다. 따라서 이 project site에는 오해를 피하기 위해 `robots.txt`를 두지 않습니다. 호스트 루트 정책이나 sitemap 선언이 필요하면 `ehdgk0214.github.io` user site 저장소에서 관리하고, sitemap은 Search Console과 네이버 서치어드바이저에 `https://ehdgk0214.github.io/dongclock/sitemap.xml`로 직접 제출합니다.
 
 ## 배포 전 점검
 
