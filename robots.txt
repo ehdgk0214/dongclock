@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ehdgk0214.github.io/dongclock/sitemap.xml
+Sitemap: https://dongclock.com/sitemap.xml

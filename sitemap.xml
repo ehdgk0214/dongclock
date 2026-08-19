@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ehdgk0214.github.io/dongclock/</loc></url>
-  <url><loc>https://ehdgk0214.github.io/dongclock/en.html</loc></url>
-  <url><loc>https://ehdgk0214.github.io/dongclock/terms/</loc></url>
-  <url><loc>https://ehdgk0214.github.io/dongclock/privacy/</loc></url>
-  <url><loc>https://ehdgk0214.github.io/dongclock/refund/</loc></url>
-  <url><loc>https://ehdgk0214.github.io/dongclock/accuracy/</loc></url>
+  <url><loc>https://dongclock.com/</loc></url>
+  <url><loc>https://dongclock.com/en.html</loc></url>
+  <url><loc>https://dongclock.com/terms/</loc></url>
+  <url><loc>https://dongclock.com/privacy/</loc></url>
+  <url><loc>https://dongclock.com/refund/</loc></url>
+  <url><loc>https://dongclock.com/accuracy/</loc></url>
+  <url><loc>https://dongclock.com/open-source/</loc></url>
 </urlset>
