@@ -92,20 +92,19 @@
           <p class="cta-note" id="basic-availability">Pro: one-time $7 payment · one year from purchase · no automatic renewal</p>
         </div>
 
-        <div class="instrument" aria-label="Conceptual server-time measurement panel">
-          <div class="instrument-head"><span>HTTP TIME OBSERVATION</span><span class="live-mark">MEASURING</span></div>
+        <div class="instrument" aria-label="DongClock Basic UI preview using the browser's current time">
+          <div class="instrument-head"><span>DONGCLOCK BASIC UI</span><span class="live-mark">BROWSER TIME</span></div>
           <div class="clock-face">
-            <span class="clock-date">SERVER ESTIMATE · KST</span>
-            <strong id="demo-clock">14:42:28<span>.482</span></strong>
-            <span class="clock-source">advancing from a monotonic anchor</span>
+            <span class="demo-target">developer.microsoft.com</span>
+            <strong id="demo-clock"><span class="clock-hms">--:--:--</span><span class="clock-millis">.---</span></strong>
+            <span class="demo-progress" aria-hidden="true"></span>
+            <span class="demo-statuses">
+              <span class="demo-status demo-status-primary">Standard mode</span>
+              <span class="demo-status">Estimated error ±542 ms</span>
+              <span class="demo-status demo-status-muted">◌ Adjusting error</span>
+            </span>
           </div>
-          <div class="metrics">
-            <div><span>ROUND TRIP</span><strong>Measure</strong></div>
-            <div><span>SAMPLES</span><strong>Compare</strong></div>
-            <div><span>RESULT</span><strong class="accent">Display after validation</strong></div>
-          </div>
-          <div class="range-bar"><span style="--start:25%;--width:38%"></span></div>
-          <p>Start with a possible offset interval, not a single exact point.</p>
+          <p class="demo-note">Website UI demo · not a live server-time measurement.</p>
         </div>
       </div>
       <div class="container principles" aria-label="Four DongClock principles">
@@ -188,9 +187,9 @@
     <section class="section continuity" aria-labelledby="continuity-title">
       <div class="container continuity-grid">
         <ol class="continuity-visual desktop-detail" aria-label="Three steps after measurement continuity is interrupted">
-          <li><span class="step-number">1</span><small>Normal measurement</small><strong>Collect observations<br>and estimate time</strong></li>
-          <li class="interrupted"><span class="step-number">2</span><small>Sleep · long pause</small><strong>Measurement<br>continuity is lost</strong></li>
-          <li class="reacquire"><span class="step-number">3</span><small>Measure again</small><strong>Exclude old evidence<br>and start fresh</strong></li>
+          <li><span class="step-number">1</span><span class="continuity-copy"><small>Normal measurement</small><strong>Collect observations<br>and estimate time</strong></span></li>
+          <li class="interrupted"><span class="step-number">2</span><span class="continuity-copy"><small>Sleep · long pause</small><strong>Measurement<br>continuity is lost</strong></span></li>
+          <li class="reacquire"><span class="step-number">3</span><span class="continuity-copy"><small>Measure again</small><strong>Exclude old evidence<br>and start fresh</strong></span></li>
         </ol>
         <div><p class="eyebrow">CONTINUITY / 04</p><h2 id="continuity-title"><span class="desktop-copy">After sleep, do not blindly continue<br>the previous estimate.</span><span class="mobile-only">After a long pause,<br>check again.</span></h2><p class="desktop-copy">After sleep or a long interruption, old observations may no longer represent the current server path. DongClock does not mix that evidence into the new measurement; it builds a fresh basis from new observations.</p><p class="mobile-only mobile-lead">After sleep or a long interruption, DongClock discards the old timing basis and checks again with fresh observations.</p><details class="desktop-detail"><summary>Technical detail</summary><p>If the scheduled measurement is delayed beyond an allowed range, or PC clock continuity becomes unreliable, the prior estimator state is cleared and measurement restarts from fresh observations. Session identity and cumulative statistics remain, but old consensus evidence does not carry forward.</p></details><details class="mobile-only mobile-details"><summary>See technical detail</summary><div class="mobile-detail-body"><ol class="mobile-flow"><li>Normal measurement</li><li>Sleep or a long pause breaks continuity</li><li>Exclude old evidence and measure again</li></ol><p>The session and cumulative statistics remain, but old consensus evidence does not carry forward.</p></div></details></div>
       </div>

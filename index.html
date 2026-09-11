@@ -92,20 +92,19 @@
           <p class="cta-note" id="basic-availability">Pro: $7 일회성 결제 · 구매일 기준 1년 · 자동 갱신 없음</p>
         </div>
 
-        <div class="instrument" aria-label="서버시간 측정 개념을 표현한 계측 패널">
-          <div class="instrument-head"><span>HTTP 시간 관측</span><span class="live-mark">측정 중</span></div>
+        <div class="instrument" aria-label="브라우저 현재 시각으로 동작하는 DongClock Basic 화면 미리보기">
+          <div class="instrument-head"><span>DONGCLOCK BASIC UI</span><span class="live-mark">브라우저 시각</span></div>
           <div class="clock-face">
-            <span class="clock-date">서버시간 추정 · 한국 표준시</span>
-            <strong id="demo-clock">14:42:28<span>.482</span></strong>
-            <span class="clock-source">단조 시계를 기준으로 진행</span>
+            <span class="demo-target">developer.microsoft.com</span>
+            <strong id="demo-clock"><span class="clock-hms">--:--:--</span><span class="clock-millis">.---</span></strong>
+            <span class="demo-progress" aria-hidden="true"></span>
+            <span class="demo-statuses">
+              <span class="demo-status demo-status-primary">일반 측정</span>
+              <span class="demo-status">추정 오차 ±542 ms</span>
+              <span class="demo-status demo-status-muted">◌ 오차 보정 중</span>
+            </span>
           </div>
-          <div class="metrics">
-            <div><span>왕복 시간</span><strong>측정</strong></div>
-            <div><span>표본</span><strong>비교</strong></div>
-            <div><span>결과</span><strong class="accent">검증 후 표시</strong></div>
-          </div>
-          <div class="range-bar"><span style="--start:25%;--width:38%"></span></div>
-          <p>한 점이 아니라 가능한 시차 범위부터 계산합니다.</p>
+          <p class="demo-note">홈페이지 UI 데모 · 실제 서버시간 측정값이 아닙니다.</p>
         </div>
       </div>
       <div class="container principles" aria-label="DongClock의 네 가지 원칙">
@@ -196,9 +195,9 @@
     <section class="section continuity" aria-labelledby="continuity-title">
       <div class="container continuity-grid">
         <ol class="continuity-visual desktop-detail" aria-label="측정 중단 후 다시 확인하는 세 단계">
-          <li><span class="step-number">1</span><small>정상 측정</small><strong>새 표본을 모아<br>서버시간을 계산</strong></li>
-          <li class="interrupted"><span class="step-number">2</span><small>절전 · 긴 중단</small><strong>이전 측정과의<br>연속성이 끊김</strong></li>
-          <li class="reacquire"><span class="step-number">3</span><small>다시 측정</small><strong>이전 표본을 제외하고<br>처음부터 다시 확인</strong></li>
+          <li><span class="step-number">1</span><span class="continuity-copy"><small>정상 측정</small><strong>새 표본을 모아<br>서버시간을 계산</strong></span></li>
+          <li class="interrupted"><span class="step-number">2</span><span class="continuity-copy"><small>절전 · 긴 중단</small><strong>이전 측정과의<br>연속성이 끊김</strong></span></li>
+          <li class="reacquire"><span class="step-number">3</span><span class="continuity-copy"><small>다시 측정</small><strong>이전 표본을 제외하고<br>처음부터 다시 확인</strong></span></li>
         </ol>
         <div><p class="eyebrow">측정 연속성 / 04</p><h2 id="continuity-title"><span class="desktop-copy">절전 후에는 이전 측정값을<br>그대로 이어 쓰지 않습니다.</span><span class="mobile-only">오래 멈췄다면<br>새로 확인합니다.</span></h2><p class="desktop-copy">PC가 절전되거나 측정이 오래 멈추면, 중단 전 표본이 지금의 서버 상태를 대표한다고 보기 어렵습니다. DongClock은 과거 측정 증거를 새 표본과 섞지 않고, 다시 수집한 표본으로 기준을 새로 만듭니다.</p><p class="mobile-only mobile-lead">절전이나 긴 중단 이후에는 이전 측정값을 그대로 이어 사용하지 않고 새 표본으로 다시 확인합니다.</p><details class="desktop-detail"><summary>기술 세부사항 보기</summary><p>예정된 측정이 허용 범위를 크게 벗어나거나 PC 시각의 연속성을 신뢰하기 어려워지면, 이전 추정 상태를 초기화하고 새 표본으로 측정을 다시 시작합니다. 사용자 세션과 누적 통계는 유지하되 시간 합의에 쓰는 과거 증거는 이어 사용하지 않습니다.</p></details><details class="mobile-only mobile-details"><summary>기술 세부사항 보기</summary><div class="mobile-detail-body"><ol class="mobile-flow"><li>정상 측정</li><li>절전·긴 중단으로 연속성 종료</li><li>이전 표본을 제외하고 새로 측정</li></ol><p>세션과 누적 통계는 유지하지만 시간 합의에 사용한 과거 증거는 이어 쓰지 않습니다.</p></div></details></div>
       </div>

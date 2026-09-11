@@ -340,3 +340,152 @@ html[lang="en"] .schedule-metrics strong{
   .schedule-metrics>div{padding:15px 16px}
   .schedule-metrics strong{min-height:0}
 }
+
+/* Mirror the current DongClock Basic clock screen with a browser-time demo. */
+.instrument{
+  padding:20px 22px 16px;
+  background:linear-gradient(145deg,#101415,#090c0d 70%);
+}
+.instrument-head{position:relative;z-index:1}
+.clock-face{
+  padding:58px 0 46px;
+  text-align:center;
+}
+.clock-face .demo-target{
+  display:inline-flex;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 42px;
+  padding:7px 11px;
+  border-radius:8px;
+  background:#171b1c;
+  color:#aab1af;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.2;
+  letter-spacing:0;
+}
+#demo-clock{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 16px;
+  color:#f3f5f4;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:clamp(48px,4.85vw,70px);
+  font-weight:650;
+  font-variant-numeric:tabular-nums;
+  line-height:.95;
+  letter-spacing:-.065em;
+  white-space:nowrap;
+}
+#demo-clock .clock-hms{color:#f3f5f4}
+#demo-clock .clock-millis{
+  color:#b7bfbd;
+  font-size:.62em;
+  font-weight:600;
+  letter-spacing:-.045em;
+}
+.clock-face .demo-progress{
+  position:relative;
+  display:block;
+  width:min(88%,400px);
+  height:8px;
+  margin:0 auto 32px;
+  overflow:hidden;
+  background:repeating-linear-gradient(90deg,#202526 0 23px,transparent 23px 27px);
+}
+.clock-face .demo-progress:before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:45%;
+  background:repeating-linear-gradient(90deg,#edf0ef 0 23px,transparent 23px 27px);
+}
+.clock-face .demo-statuses{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.clock-face .demo-status{
+  display:inline-flex;
+  min-height:34px;
+  align-items:center;
+  padding:7px 12px;
+  border:1px solid #242a2b;
+  border-radius:999px;
+  color:#c0c6c4;
+  background:#0d1011;
+  font-size:11px;
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:-.01em;
+}
+.clock-face .demo-status-primary{
+  border-color:#28483f;
+  color:#80d9c2;
+  background:#12201d;
+}
+.clock-face .demo-status-muted{color:#8f9896}
+.instrument .demo-note{
+  margin:0;
+  color:var(--dim);
+  font-size:11px;
+  text-align:center;
+}
+
+/* Give every continuity step the same badge, label and body rows. */
+.continuity-grid{grid-template-columns:1.18fr .82fr;gap:72px}
+ol.continuity-visual{min-height:320px}
+.continuity-visual li{
+  display:grid;
+  grid-template-rows:28px 1fr;
+  align-content:center;
+  justify-content:stretch;
+  gap:24px;
+  padding:24px 17px;
+}
+.continuity-visual .step-number{margin:0}
+.continuity-copy{
+  display:grid;
+  grid-template-rows:minmax(3em,auto) minmax(4.8em,auto);
+  align-content:start;
+  gap:8px;
+  min-width:0;
+}
+.continuity-visual .continuity-copy small{
+  display:block;
+  line-height:1.5;
+}
+.continuity-visual .continuity-copy strong{
+  display:block;
+  margin:0;
+  font-size:15px;
+  line-height:1.5;
+}
+
+@media(min-width:801px) and (max-width:1100px){
+  .continuity-grid{grid-template-columns:1fr;gap:55px}
+}
+
+@media(max-width:800px){
+  .hero .instrument{
+    display:block;
+    max-width:600px;
+    margin-top:42px;
+  }
+}
+
+@media(max-width:520px){
+  .instrument{padding:18px 14px 14px}
+  .clock-face{padding:46px 0 38px}
+  .clock-face .demo-target{margin-bottom:34px;font-size:11px}
+  #demo-clock{font-size:clamp(39px,11.6vw,53px);letter-spacing:-.075em}
+  .clock-face .demo-progress{width:92%;margin-bottom:26px}
+  .clock-face .demo-statuses{gap:6px}
+  .clock-face .demo-status{min-height:31px;padding:6px 7px;font-size:9px}
+}

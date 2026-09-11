@@ -51,17 +51,23 @@ if (navToggle && nav) {
 }
 
 const demoClock = document.querySelector('#demo-clock');
-if (demoClock && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const anchor = Date.now();
-  const initial = 14 * 3600000 + 42 * 60000 + 28482;
-  const formatClock = () => {
-    const value = (initial + Date.now() - anchor) % 86400000;
-    const hours = String(Math.floor(value / 3600000)).padStart(2, '0');
-    const minutes = String(Math.floor(value / 60000) % 60).padStart(2, '0');
-    const seconds = String(Math.floor(value / 1000) % 60).padStart(2, '0');
-    const millis = String(value % 1000).padStart(3, '0');
-    demoClock.innerHTML = `${hours}:${minutes}:${seconds}<span>.${millis}</span>`;
-    requestAnimationFrame(formatClock);
+if (demoClock) {
+  const hoursMinutesSeconds = demoClock.querySelector('.clock-hms');
+  const milliseconds = demoClock.querySelector('.clock-millis');
+  const renderDemoClock = () => {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const millis = String(now.getMilliseconds()).padStart(3, '0');
+
+    hoursMinutesSeconds.textContent = `${hours}:${minutes}:${seconds}`;
+    milliseconds.textContent = `.${millis}`;
+    demoClock.setAttribute('aria-label', `${hours}:${minutes}:${seconds}.${millis}`);
   };
-  requestAnimationFrame(formatClock);
+
+  renderDemoClock();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.setInterval(renderDemoClock, 50);
+  }
 }
