@@ -1,39 +1,84 @@
 const SITE_CONFIG = Object.freeze({
   version: '1.0.0',
-  basicDownloadUrl: 'https://4714124465239.gumroad.com/l/clockbasic',
-  proGumroadUrl: 'https://4714124465239.gumroad.com/l/clockpro'
+  // TODO: Add the confirmed Microsoft Store product URLs when the listings are public.
+  microsoftStoreBasicUrl: '',
+  microsoftStoreProUrl: ''
 });
 
 const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'ko';
 const UI_COPY = Object.freeze({
-  ko: { basicUnavailable: 'Basic 다운로드 준비 중', basicStatus: 'Windows 10 / 11 x64', menuOpen: '메뉴 열기', menuClose: '메뉴 닫기' },
-  en: { basicUnavailable: 'Basic download coming soon', basicStatus: 'Windows 10 / 11 x64', menuOpen: 'Open menu', menuClose: 'Close menu' }
+  ko: {
+    basicAvailable: 'Microsoft Store에서 받기',
+    basicUnavailable: 'Microsoft Store 링크 준비 중',
+    proAvailable: 'Microsoft Store에서 구매',
+    proUnavailable: 'Microsoft Store 링크 준비 중',
+    basicStatus: '무료 · Windows 10 / 11 x64',
+    proStatus: '가격 및 구매 조건은 Microsoft Store에서 확인',
+    storeStatus: 'Microsoft Store 상품 페이지 준비 중',
+    menuOpen: '메뉴 열기',
+    menuClose: '메뉴 닫기'
+  },
+  en: {
+    basicAvailable: 'Get it from Microsoft',
+    basicUnavailable: 'Microsoft Store link coming soon',
+    proAvailable: 'Get Pro from Microsoft Store',
+    proUnavailable: 'Microsoft Store link coming soon',
+    basicStatus: 'Free · Windows 10 / 11 x64',
+    proStatus: 'See Microsoft Store for price and purchase terms',
+    storeStatus: 'Microsoft Store product page coming soon',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu'
+  }
 });
 
 document.querySelectorAll('.js-version').forEach((node) => {
   node.textContent = SITE_CONFIG.version;
 });
 
-document.querySelectorAll('.js-pro-link').forEach((link) => {
-  link.href = SITE_CONFIG.proGumroadUrl;
-});
+const configureStoreLinks = (selector, url, availableCopy, unavailableCopy) => {
+  document.querySelectorAll(selector).forEach((link) => {
+    if (url) {
+      link.href = url;
+      link.textContent = availableCopy;
+      link.removeAttribute('aria-disabled');
+      link.removeAttribute('tabindex');
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      return;
+    }
 
-document.querySelectorAll('.js-basic-link').forEach((link) => {
-  if (SITE_CONFIG.basicDownloadUrl) {
-    link.href = SITE_CONFIG.basicDownloadUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    return;
-  }
+    link.removeAttribute('href');
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    link.setAttribute('aria-disabled', 'true');
+    link.setAttribute('tabindex', '-1');
+    link.textContent = unavailableCopy;
+  });
+};
 
-  link.href = '#download';
-  link.setAttribute('aria-disabled', 'true');
-  link.textContent = UI_COPY[pageLanguage].basicUnavailable;
-  link.addEventListener('click', (event) => event.preventDefault());
-});
+configureStoreLinks(
+  '.js-basic-link',
+  SITE_CONFIG.microsoftStoreBasicUrl,
+  UI_COPY[pageLanguage].basicAvailable,
+  UI_COPY[pageLanguage].basicUnavailable
+);
+configureStoreLinks(
+  '.js-pro-link',
+  SITE_CONFIG.microsoftStoreProUrl,
+  UI_COPY[pageLanguage].proAvailable,
+  UI_COPY[pageLanguage].proUnavailable
+);
 
 document.querySelectorAll('.js-basic-status').forEach((node) => {
-  node.textContent = SITE_CONFIG.basicDownloadUrl ? UI_COPY[pageLanguage].basicStatus : UI_COPY[pageLanguage].basicUnavailable;
+  node.textContent = SITE_CONFIG.microsoftStoreBasicUrl
+    ? UI_COPY[pageLanguage].basicStatus
+    : UI_COPY[pageLanguage].storeStatus;
+});
+
+document.querySelectorAll('.js-pro-status').forEach((node) => {
+  node.textContent = SITE_CONFIG.microsoftStoreProUrl
+    ? UI_COPY[pageLanguage].proStatus
+    : UI_COPY[pageLanguage].storeStatus;
 });
 
 const navToggle = document.querySelector('.nav-toggle');

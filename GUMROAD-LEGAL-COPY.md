@@ -1,6 +1,10 @@
 # DongClock Gumroad paste-ready copy
 
-Gumroad Basic/Pro 상품 설명과 정책 입력란에 그대로 붙여 넣을 수 있는 한국어·영어 문구입니다.
+> **레거시 운영 문서 / Legacy operations document**
+>
+> 이 문서는 Microsoft Store 전환 전 Gumroad 상품 및 기존 Gumroad 구매자 지원 기록을 보존하기 위한 것입니다. 신규 판매 채널용 문구로 사용하지 마세요. 기존 구매자의 당시 가격, 라이선스, 활성화 및 환불 조건을 확인하거나 Gumroad 상품 페이지를 유지보수할 때만 사용합니다.
+
+Gumroad Basic/Pro 상품 설명과 기존 정책 입력란에 사용할 수 있는 한국어·영어 문구입니다.
 
 ## Basic — 한국어
 
