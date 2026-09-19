@@ -14,7 +14,7 @@ dongclock-site/
 ├─ accuracy/index.html
 ├─ open-source/index.html
 ├─ open-source/THIRD-PARTY-NOTICES.txt
-├─ GUMROAD-LEGAL-COPY.md
+├─ MICROSOFT-STORE-LISTING-COPY.md
 ├─ downloads/basic/1.1.0/  # 기존 직접 배포 파일 보관; 홈페이지에서 미노출
 ├─ CNAME
 ├─ sitemap.xml
@@ -32,7 +32,7 @@ dongclock-site/
 - `en.html`: 영어 페이지
 - 두 페이지의 헤더에서 언어를 전환할 수 있습니다.
 - 다섯 법적/제품 고지 페이지는 각 URL 안에 한국어와 영어를 모두 포함하며, 언어 링크는 같은 문서의 해당 언어 섹션으로 이동합니다.
-- `GUMROAD-LEGAL-COPY.md`: Microsoft Store 전환 전 Gumroad 상품과 기존 구매자 지원을 위한 레거시 운영 문서입니다. 신규 판매 문구로 사용하지 않습니다.
+- `MICROSOFT-STORE-LISTING-COPY.md`: Microsoft Store Basic/Pro 상품 설명과 링크 자리표시자를 정리한 운영 문서입니다.
 
 ## 자주 바꾸는 설정
 
@@ -42,7 +42,7 @@ dongclock-site/
 - `microsoftStoreBasicUrl`: Basic Microsoft Store 상품 URL
 - `microsoftStoreProUrl`: Pro Microsoft Store 상품 URL
 
-두 URL은 Store 상품 페이지가 확인되기 전까지 빈 문자열로 둡니다. 이 상태에서는 CTA가 링크 없이 비활성화되고 “Microsoft Store 링크 준비 중”으로 표시됩니다. 임의 URL이나 `href="#"`를 넣지 마세요.
+현재 두 URL에는 실제 상품 주소가 확정되기 전 자리표시자로 `베이직링크`, `프로링크`를 사용합니다. 실제 Microsoft Store 상품 페이지가 공개되면 이 두 값만 최종 URL로 교체합니다.
 
 Basic은 무료로 안내하며, Pro의 가격과 구매 조건은 국가·지역별 Microsoft Store 상품 페이지에서 확인하도록 표시합니다. Store 상품 정보가 확정되기 전에는 고정 가격이나 라이선스 기간을 홈페이지와 JSON-LD에 추가하지 않습니다.
 
@@ -90,7 +90,6 @@ python -m http.server 8000
 - `SITE_CONFIG.microsoftStoreBasicUrl` 설정 여부
 - `SITE_CONFIG.microsoftStoreProUrl` 설정 여부
 - Store 상품 페이지의 Pro 가격·구매 형태·이용 권한 조건
-- 기존 Gumroad 구매자의 라이선스·환불·지원 경로 유지 여부
 - 제품 버전과 Windows 지원 범위
 - Microsoft Store용 앱의 이용 권한 확인 및 개인정보 데이터 흐름
 - canonical, Open Graph URL과 `sitemap.xml`의 공식 배포 주소
