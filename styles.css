@@ -395,14 +395,14 @@ html[lang="en"] .schedule-metrics strong{
   height:8px;
   margin:0 auto 32px;
   overflow:hidden;
-  background:repeating-linear-gradient(90deg,#202526 0 23px,transparent 23px 27px);
+  background:repeating-linear-gradient(90deg,#202526 0 calc(5% - 4px),transparent calc(5% - 4px) 5%);
 }
 .clock-face .demo-progress:before{
   content:"";
   position:absolute;
   inset:0 auto 0 0;
-  width:45%;
-  background:repeating-linear-gradient(90deg,#edf0ef 0 23px,transparent 23px 27px);
+  width:calc(var(--demo-progress-step, 0) * 5%);
+  background:repeating-linear-gradient(90deg,#edf0ef 0 calc(5% - 4px),transparent calc(5% - 4px) 5%);
 }
 .clock-face .demo-statuses{
   display:flex;
