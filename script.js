@@ -6,6 +6,8 @@ const SITE_CONFIG = Object.freeze({
 });
 
 const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'ko';
+const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 const UI_COPY = Object.freeze({
   ko: {
     basicAvailable: 'Microsoft Store에서 받기',
@@ -121,4 +123,49 @@ if (demoClock) {
 
   renderDemoClock();
   window.setInterval(renderDemoClock, 50);
+}
+
+
+const demoErrorValue = document.querySelector('.demo-error-value');
+const demoErrorState = document.querySelector('.demo-error-state');
+if (demoErrorValue) {
+  const minimumErrorMs = 14;
+  const enteredAt = performance.now();
+  let currentErrorMs = randomInteger(300, 500);
+
+  const renderDemoError = () => {
+    demoErrorValue.textContent = pageLanguage === 'en'
+      ? `Estimated error ±${currentErrorMs} ms`
+      : `추정 오차 ±${currentErrorMs} ms`;
+
+    if (demoErrorState) {
+      const settled = currentErrorMs <= minimumErrorMs;
+      demoErrorState.textContent = pageLanguage === 'en'
+        ? (settled ? '● Error stabilized' : '◌ Adjusting error')
+        : (settled ? '● 오차 안정' : '◌ 오차 보정 중');
+      demoErrorState.classList.toggle('is-settled', settled);
+    }
+  };
+
+  renderDemoError();
+
+  const demoErrorTimer = window.setInterval(() => {
+    const elapsed = performance.now() - enteredAt;
+
+    if (elapsed <= 3000) {
+      currentErrorMs = randomInteger(300, 500);
+    } else if (currentErrorMs > minimumErrorMs) {
+      const reductionRatio = randomInteger(40, 70) / 100;
+      currentErrorMs = Math.max(
+        minimumErrorMs,
+        Math.round(currentErrorMs * reductionRatio)
+      );
+    }
+
+    renderDemoError();
+
+    if (currentErrorMs <= minimumErrorMs && elapsed > 3000) {
+      window.clearInterval(demoErrorTimer);
+    }
+  }, 1000);
 }
