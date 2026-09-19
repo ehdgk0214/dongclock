@@ -96,10 +96,11 @@ if (navToggle && nav) {
 }
 
 const demoClock = document.querySelector('#demo-clock');
-const demoProgress = document.querySelector('.demo-progress');
+const demoProgressCells = Array.from(document.querySelectorAll('.demo-progress-cell'));
 if (demoClock) {
   const hoursMinutesSeconds = demoClock.querySelector('.clock-hms');
   const milliseconds = demoClock.querySelector('.clock-millis');
+
   const renderDemoClock = () => {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -112,14 +113,12 @@ if (demoClock) {
     milliseconds.textContent = `.${millis}`;
     demoClock.setAttribute('aria-label', `${hours}:${minutes}:${seconds}.${millis}`);
 
-    if (demoProgress) {
-      const filledSteps = Math.floor(millisValue / 50);
-      demoProgress.style.setProperty('--demo-progress-step', String(filledSteps));
-    }
+    const filledSteps = Math.floor(millisValue / 50);
+    demoProgressCells.forEach((cell, index) => {
+      cell.classList.toggle('is-filled', index < filledSteps);
+    });
   };
 
   renderDemoClock();
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.setInterval(renderDemoClock, 50);
-  }
+  window.setInterval(renderDemoClock, 50);
 }
