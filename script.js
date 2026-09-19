@@ -1,8 +1,8 @@
 const SITE_CONFIG = Object.freeze({
   version: '1.0.0',
-  // TODO: Add the confirmed Microsoft Store product URLs when the listings are public.
-  microsoftStoreBasicUrl: '',
-  microsoftStoreProUrl: ''
+  // TODO: Replace these placeholders with the confirmed Microsoft Store product URLs when the listings are public.
+  microsoftStoreBasicUrl: '베이직링크',
+  microsoftStoreProUrl: '프로링크'
 });
 
 const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'ko';
