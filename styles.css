@@ -432,6 +432,20 @@ html[lang="en"] .schedule-metrics strong{
   background:#12201d;
 }
 .clock-face .demo-status-muted{color:#8f9896}
+.clock-face .demo-error-value{
+  min-width:132px;
+  justify-content:center;
+  font-variant-numeric:tabular-nums;
+}
+.clock-face .demo-error-state{
+  min-width:92px;
+  justify-content:center;
+}
+.clock-face .demo-error-state.is-settled{
+  color:#80d9c2;
+  border-color:#28483f;
+}
+
 .instrument .demo-note{
   margin:0;
   color:var(--dim);
