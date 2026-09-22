@@ -42,7 +42,7 @@ dongclock-site/
 - `microsoftStoreBasicUrl`: Basic Microsoft Store 상품 URL
 - `microsoftStoreProUrl`: Pro Microsoft Store 상품 URL
 
-현재 두 URL에는 실제 상품 주소가 확정되기 전 자리표시자로 `베이직링크`, `프로링크`를 사용합니다. 실제 Microsoft Store 상품 페이지가 공개되면 이 두 값만 최종 URL로 교체합니다.
+Basic URL은 실제 Microsoft Store 상품 주소 `https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare`를 사용합니다. Pro는 아직 자리표시자 `프로링크`를 사용하며, Pro 상품 페이지가 공개되면 해당 값만 최종 URL로 교체합니다.
 
 Basic은 무료로 안내하며, Pro의 가격과 구매 조건은 국가·지역별 Microsoft Store 상품 페이지에서 확인하도록 표시합니다. Store 상품 정보가 확정되기 전에는 고정 가격이나 라이선스 기간을 홈페이지와 JSON-LD에 추가하지 않습니다.
 
