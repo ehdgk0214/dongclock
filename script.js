@@ -1,7 +1,7 @@
 const SITE_CONFIG = Object.freeze({
   version: '1.0.0',
-  // TODO: Replace these placeholders with the confirmed Microsoft Store product URLs when the listings are public.
-  microsoftStoreBasicUrl: '베이직링크',
+  // Basic listing is live. Replace the Pro placeholder when its Microsoft Store listing is public.
+  microsoftStoreBasicUrl: 'https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare',
   microsoftStoreProUrl: '프로링크'
 });
 
