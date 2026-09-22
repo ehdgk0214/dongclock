@@ -2,10 +2,10 @@
 
 Microsoft Store 상품 등록용 Basic / Pro 공통 운영 문구입니다.
 
-> 실제 상품 페이지가 공개되면 아래 자리표시자 링크만 최종 Microsoft Store URL로 교체합니다.
+> Microsoft Store 상품 링크
 >
-> - Basic: `베이직링크`
-> - Pro: `프로링크`
+> - Basic: `https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare`
+> - Pro: `프로링크` (상품 페이지 공개 후 교체)
 
 ## Basic — 한국어
 
@@ -29,7 +29,7 @@ DongClock Server Time Basic은 Windows 10 / 11 x64용 무료 HTTP 서버시간 �
 오픈소스 및 제3자 라이선스: https://dongclock.com/open-source/
 지원: dongclock2026@gmail.com
 
-Microsoft Store 링크: 베이직링크
+Microsoft Store 링크: https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare
 
 ## Basic — English
 
