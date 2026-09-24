@@ -32,7 +32,7 @@ dongclock-site/
 - `en.html`: 영어 페이지
 - 두 페이지의 헤더에서 언어를 전환할 수 있습니다.
 - 다섯 법적/제품 고지 페이지는 각 URL 안에 한국어와 영어를 모두 포함하며, 언어 링크는 같은 문서의 해당 언어 섹션으로 이동합니다.
-- `MICROSOFT-STORE-LISTING-COPY.md`: Microsoft Store Basic/Pro 상품 설명과 링크 자리표시자를 정리한 운영 문서입니다.
+- `MICROSOFT-STORE-LISTING-COPY.md`: Microsoft Store Basic/Pro 상품 설명과 실제 상품 링크를 정리한 운영 문서입니다.
 
 ## 자주 바꾸는 설정
 
@@ -42,7 +42,7 @@ dongclock-site/
 - `microsoftStoreBasicUrl`: Basic Microsoft Store 상품 URL
 - `microsoftStoreProUrl`: Pro Microsoft Store 상품 URL
 
-Basic URL은 실제 Microsoft Store 상품 주소 `https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare`를 사용합니다. Pro는 아직 자리표시자 `프로링크`를 사용하며, Pro 상품 페이지가 공개되면 해당 값만 최종 URL로 교체합니다.
+Basic과 Pro 모두 실제 Microsoft Store 상품 주소를 사용합니다. Basic: `https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare`, Pro: `https://apps.microsoft.com/detail/9ph3wmbzpq50?hl=ko-KR&gl=KR`.
 
 Basic은 무료로 안내하며, Pro의 가격과 구매 조건은 국가·지역별 Microsoft Store 상품 페이지에서 확인하도록 표시합니다. Store 상품 정보가 확정되기 전에는 고정 가격이나 라이선스 기간을 홈페이지와 JSON-LD에 추가하지 않습니다.
 
