@@ -1,8 +1,8 @@
 const SITE_CONFIG = Object.freeze({
   version: '1.0.0',
-  // Basic listing is live. Replace the Pro placeholder when its Microsoft Store listing is public.
+  // Microsoft Store listings for Basic and Pro are live.
   microsoftStoreBasicUrl: 'https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare',
-  microsoftStoreProUrl: '프로링크'
+  microsoftStoreProUrl: 'https://apps.microsoft.com/detail/9ph3wmbzpq50?hl=ko-KR&gl=KR'
 });
 
 const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'ko';
@@ -10,9 +10,9 @@ const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) 
 
 const UI_COPY = Object.freeze({
   ko: {
-    basicAvailable: 'Microsoft Store에서 받기',
+    basicAvailable: 'Basic 다운로드',
     basicUnavailable: 'Microsoft Store 링크 준비 중',
-    proAvailable: 'Microsoft Store에서 구매',
+    proAvailable: 'Pro 구매',
     proUnavailable: 'Microsoft Store 링크 준비 중',
     basicStatus: '무료 · Windows 10 / 11 x64',
     proStatus: '가격 및 구매 조건은 Microsoft Store에서 확인',
@@ -21,9 +21,9 @@ const UI_COPY = Object.freeze({
     menuClose: '메뉴 닫기'
   },
   en: {
-    basicAvailable: 'Get it from Microsoft',
+    basicAvailable: 'Download Basic',
     basicUnavailable: 'Microsoft Store link coming soon',
-    proAvailable: 'Get Pro from Microsoft Store',
+    proAvailable: 'Buy Pro',
     proUnavailable: 'Microsoft Store link coming soon',
     basicStatus: 'Free · Windows 10 / 11 x64',
     proStatus: 'See Microsoft Store for price and purchase terms',
