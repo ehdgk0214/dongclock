@@ -5,7 +5,7 @@ Microsoft Store 상품 등록용 Basic / Pro 공통 운영 문구입니다.
 > Microsoft Store 상품 링크
 >
 > - Basic: `https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare`
-> - Pro: `프로링크` (상품 페이지 공개 후 교체)
+> - Pro: `https://apps.microsoft.com/detail/9ph3wmbzpq50?hl=ko-KR&gl=KR`
 
 ## Basic — 한국어
 
@@ -78,7 +78,7 @@ DongClock Server Time Pro는 Windows 10 / 11 x64용 HTTP 서버시간 측정 도
 오픈소스 및 제3자 라이선스: https://dongclock.com/open-source/
 지원: dongclock2026@gmail.com
 
-Microsoft Store 링크: 프로링크
+Microsoft Store 링크: https://apps.microsoft.com/detail/9ph3wmbzpq50?hl=ko-KR&gl=KR
 
 ## Pro — English
 
