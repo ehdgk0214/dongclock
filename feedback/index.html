@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0e0f">
+  <title>피드백 보내기 | DongClock Server Time</title>
+  <meta name="description" content="DongClock Server Time 버그 리포트와 수정 제안을 보내는 공식 피드백 페이지입니다.">
+  <link rel="canonical" href="https://dongclock.com/feedback/">
+  <link rel="icon" type="image/png" sizes="256x256" href="../assets/dongclock-icon.png">
+  <link rel="apple-touch-icon" href="../assets/dongclock-icon.png">
+  <link rel="stylesheet" href="../styles.css?v=20260924-feedback">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header legal-header">
+    <div class="nav-shell">
+      <a class="brand" href="../" aria-label="DongClock Server Time 홈페이지">
+        <img src="../assets/dongclock-icon.png" alt="" width="36" height="36">
+        <span>DongClock <b>Server Time</b></span>
+      </a>
+      <div class="language-switch" role="group" aria-label="언어 선택">
+        <button type="button" class="feedback-lang is-active" data-lang="ko">한국어</button>
+        <button type="button" class="feedback-lang" data-lang="en">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="feedback-main">
+    <div class="container feedback-shell">
+      <section class="feedback-intro">
+        <p class="eyebrow" data-i18n="eyebrow">FEEDBACK</p>
+        <h1 data-i18n="title">동클에 의견을<br><em>보내주세요.</em></h1>
+        <p class="feedback-lead" data-i18n="lead">버그 리포트와 수정 제안을 이 페이지에서 바로 보낼 수 있습니다. GitHub 로그인이나 메일 앱은 필요하지 않습니다.</p>
+        <div class="feedback-notice">
+          <strong data-i18n="noticeTitle">민감한 정보는 보내지 마세요.</strong>
+          <p data-i18n="noticeBody">비밀번호, 인증코드, 결제정보, 개인 토큰 등은 입력하거나 첨부하지 마세요.</p>
+        </div>
+      </section>
+
+      <section class="feedback-card" aria-labelledby="feedback-form-title">
+        <div class="feedback-card-head">
+          <div>
+            <p class="eyebrow" data-i18n="formEyebrow">REPORT / SUGGESTION</p>
+            <h2 id="feedback-form-title" data-i18n="formTitle">피드백 작성</h2>
+          </div>
+          <span class="feedback-direct-email"><span data-i18n="emailFallback">직접 문의</span> · <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></span>
+        </div>
+
+        <form class="feedback-form" action="https://formsubmit.co/dongclock2026@gmail.com" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_next" value="https://dongclock.com/feedback/thanks.html">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_subject" id="feedback-subject" value="[DongClock] Feedback">
+          <input type="text" name="_honey" class="feedback-honey" tabindex="-1" autocomplete="off">
+
+          <div class="feedback-grid">
+            <label class="feedback-field">
+              <span data-i18n="typeLabel">유형</span>
+              <select name="Type" id="feedback-type" required>
+                <option value="Bug Report" data-ko="버그 리포트" data-en="Bug Report">버그 리포트</option>
+                <option value="Suggestion" data-ko="수정 제안" data-en="Suggestion">수정 제안</option>
+              </select>
+            </label>
+
+            <label class="feedback-field">
+              <span data-i18n="editionLabel">제품</span>
+              <select name="Edition" required>
+                <option value="Basic">Basic</option>
+                <option value="Pro">Pro</option>
+                <option value="Website" data-ko="홈페이지" data-en="Website">홈페이지</option>
+                <option value="Other" data-ko="기타" data-en="Other">기타</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="feedback-grid">
+            <label class="feedback-field">
+              <span data-i18n="appVersionLabel">앱 버전 <small data-i18n="optional">(선택)</small></span>
+              <input type="text" name="App version" placeholder="예: 1.0.2.0" data-placeholder-ko="예: 1.0.2.0" data-placeholder-en="e.g. 1.0.2.0">
+            </label>
+
+            <label class="feedback-field">
+              <span data-i18n="windowsLabel">Windows 버전 <small data-i18n="optional">(선택)</small></span>
+              <input type="text" name="Windows version" placeholder="예: Windows 11 24H2" data-placeholder-ko="예: Windows 11 24H2" data-placeholder-en="e.g. Windows 11 24H2">
+            </label>
+          </div>
+
+          <label class="feedback-field">
+            <span data-i18n="emailLabel">답변 받을 이메일 <small data-i18n="optional">(선택)</small></span>
+            <input type="email" name="Email" placeholder="name@example.com" autocomplete="email">
+          </label>
+
+          <label class="feedback-field">
+            <span data-i18n="targetLabel">대상 사이트 <small data-i18n="optional">(선택)</small></span>
+            <input type="text" name="Target site" placeholder="예: example.com" data-placeholder-ko="예: example.com" data-placeholder-en="e.g. example.com">
+          </label>
+
+          <label class="feedback-field">
+            <span data-i18n="titleLabel">제목</span>
+            <input type="text" name="Title" required placeholder="문제를 한 줄로 요약해 주세요." data-placeholder-ko="문제를 한 줄로 요약해 주세요." data-placeholder-en="Summarize the issue or suggestion in one line.">
+          </label>
+
+          <label class="feedback-field">
+            <span data-i18n="detailLabel">내용</span>
+            <textarea name="Details" rows="7" required placeholder="무슨 일이 있었는지 또는 무엇을 바꾸면 좋을지 구체적으로 적어주세요." data-placeholder-ko="무슨 일이 있었는지 또는 무엇을 바꾸면 좋을지 구체적으로 적어주세요." data-placeholder-en="Describe what happened or what you would like changed."></textarea>
+          </label>
+
+          <label class="feedback-field" id="steps-field">
+            <span data-i18n="stepsLabel">재현 방법 / 원하는 변경 방식 <small data-i18n="optional">(선택)</small></span>
+            <textarea name="Steps or proposed change" rows="5" placeholder="1. 앱 실행&#10;2. ...&#10;3. ..." data-placeholder-ko="1. 앱 실행&#10;2. ...&#10;3. ..." data-placeholder-en="1. Open DongClock&#10;2. ...&#10;3. ..."></textarea>
+          </label>
+
+          <label class="feedback-field">
+            <span data-i18n="fileLabel">첨부파일 <small data-i18n="optional">(선택)</small></span>
+            <input type="file" name="Attachment" accept="image/*,.txt,.log,.json">
+            <small class="feedback-help" data-i18n="fileHelp">스크린샷, 로그 또는 JSON 보고서를 첨부할 수 있습니다.</small>
+          </label>
+
+          <label class="feedback-consent">
+            <input type="checkbox" required>
+            <span data-i18n="consent">첨부 자료와 내용에 비밀번호, 인증코드, 결제정보 등 민감한 정보가 없는지 확인했습니다.</span>
+          </label>
+
+          <button class="button button-primary feedback-submit" type="submit" data-i18n="submit">피드백 보내기</button>
+          <p class="feedback-footnote" data-i18n="footnote">첫 전송 시 운영자 이메일에서 FormSubmit 활성화 확인이 필요할 수 있습니다.</p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="legal-footer">
+    <div class="container footer-grid">
+      <a class="brand" href="../"><img src="../assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></a>
+      <p><a href="../" data-i18n="home">공식 홈페이지</a></p>
+      <div class="footer-content"><p class="seller-line">© 2026 DongClock · <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></p></div>
+    </div>
+  </footer>
+
+  <script>
+    const copy = {
+      ko: {
+        eyebrow: 'FEEDBACK',
+        title: '동클에 의견을<br><em>보내주세요.</em>',
+        lead: '버그 리포트와 수정 제안을 이 페이지에서 바로 보낼 수 있습니다. GitHub 로그인이나 메일 앱은 필요하지 않습니다.',
+        noticeTitle: '민감한 정보는 보내지 마세요.',
+        noticeBody: '비밀번호, 인증코드, 결제정보, 개인 토큰 등은 입력하거나 첨부하지 마세요.',
+        formEyebrow: 'REPORT / SUGGESTION',
+        formTitle: '피드백 작성',
+        emailFallback: '직접 문의',
+        typeLabel: '유형',
+        editionLabel: '제품',
+        appVersionLabel: '앱 버전 <small>(선택)</small>',
+        windowsLabel: 'Windows 버전 <small>(선택)</small>',
+        emailLabel: '답변 받을 이메일 <small>(선택)</small>',
+        targetLabel: '대상 사이트 <small>(선택)</small>',
+        titleLabel: '제목',
+        detailLabel: '내용',
+        stepsLabel: '재현 방법 / 원하는 변경 방식 <small>(선택)</small>',
+        fileLabel: '첨부파일 <small>(선택)</small>',
+        fileHelp: '스크린샷, 로그 또는 JSON 보고서를 첨부할 수 있습니다.',
+        consent: '첨부 자료와 내용에 비밀번호, 인증코드, 결제정보 등 민감한 정보가 없는지 확인했습니다.',
+        submit: '피드백 보내기',
+        footnote: '첫 전송 시 운영자 이메일에서 FormSubmit 활성화 확인이 필요할 수 있습니다.',
+        home: '공식 홈페이지'
+      },
+      en: {
+        eyebrow: 'FEEDBACK',
+        title: 'Send feedback<br><em>to DongClock.</em>',
+        lead: 'Send bug reports and suggestions directly from this page. No GitHub login or desktop mail app is required.',
+        noticeTitle: 'Do not send sensitive information.',
+        noticeBody: 'Do not enter or attach passwords, verification codes, payment information, private tokens, or similar secrets.',
+        formEyebrow: 'REPORT / SUGGESTION',
+        formTitle: 'Write feedback',
+        emailFallback: 'Direct contact',
+        typeLabel: 'Type',
+        editionLabel: 'Product',
+        appVersionLabel: 'App version <small>(optional)</small>',
+        windowsLabel: 'Windows version <small>(optional)</small>',
+        emailLabel: 'Reply email <small>(optional)</small>',
+        targetLabel: 'Target site <small>(optional)</small>',
+        titleLabel: 'Title',
+        detailLabel: 'Details',
+        stepsLabel: 'Steps to reproduce / proposed change <small>(optional)</small>',
+        fileLabel: 'Attachment <small>(optional)</small>',
+        fileHelp: 'You can attach a screenshot, log, or JSON report.',
+        consent: 'I checked that the text and attachments do not contain passwords, verification codes, payment information, or other sensitive data.',
+        submit: 'Send feedback',
+        footnote: 'The operator may need to confirm the FormSubmit activation email on the first submission.',
+        home: 'Official homepage'
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type') === 'suggestion' ? 'suggestion' : 'bug';
+    let lang = params.get('lang') === 'en' ? 'en' : 'ko';
+
+    const typeSelect = document.querySelector('#feedback-type');
+    const subject = document.querySelector('#feedback-subject');
+    const langButtons = document.querySelectorAll('.feedback-lang');
+
+    const renderLanguage = () => {
+      document.documentElement.lang = lang;
+      document.title = lang === 'en'
+        ? 'Send Feedback | DongClock Server Time'
+        : '피드백 보내기 | DongClock Server Time';
+
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const key = node.dataset.i18n;
+        if (copy[lang][key]) node.innerHTML = copy[lang][key];
+      });
+
+      document.querySelectorAll('[data-placeholder-ko]').forEach((node) => {
+        node.placeholder = lang === 'en' ? node.dataset.placeholderEn : node.dataset.placeholderKo;
+      });
+
+      document.querySelectorAll('option[data-ko]').forEach((option) => {
+        option.textContent = lang === 'en' ? option.dataset.en : option.dataset.ko;
+      });
+
+      langButtons.forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.lang === lang);
+      });
+    };
+
+    const applyType = () => {
+      typeSelect.value = type === 'suggestion' ? 'Suggestion' : 'Bug Report';
+      subject.value = typeSelect.value === 'Suggestion'
+        ? '[DongClock] Suggestion'
+        : '[DongClock] Bug Report';
+    };
+
+    typeSelect.addEventListener('change', () => {
+      subject.value = typeSelect.value === 'Suggestion'
+        ? '[DongClock] Suggestion'
+        : '[DongClock] Bug Report';
+    });
+
+    langButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        lang = button.dataset.lang;
+        renderLanguage();
+      });
+    });
+
+    applyType();
+    renderLanguage();
+  </script>
+</body>
+</html>
