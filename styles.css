@@ -504,3 +504,10 @@ ol.continuity-visual{min-height:320px}
   .clock-face .demo-statuses{gap:6px}
   .clock-face .demo-status{min-height:31px;padding:6px 7px;font-size:9px}
 }
+
+
+/* Keep the expanded desktop navigation readable after adding GitHub feedback links. */
+@media(min-width:801px){
+  #site-nav{gap:18px}
+  #site-nav .nav-feedback{white-space:nowrap}
+}
