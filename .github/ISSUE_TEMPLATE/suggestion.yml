@@ -1,0 +1,55 @@
+name: 수정 제안 / Suggestion
+description: UI, 문구, 기능 또는 사용성 개선 아이디어를 제안해 주세요.
+title: "[Suggestion] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        DongClock을 더 나아지게 만들 수 있는 제안을 자유롭게 적어주세요.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 제안 영역 / Area
+      options:
+        - Basic
+        - Pro
+        - 홈페이지 / Website
+        - UI·UX
+        - 측정·표시 방식
+        - 문구·번역
+        - 기타 / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 현재 불편한 점 / Current issue
+      placeholder: 지금 어떤 부분이 불편하거나 아쉬운지 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 제안 내용 / Proposed change
+      placeholder: 어떻게 바뀌면 좋을지 구체적으로 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 기대 효과 / Why this would help
+      placeholder: 이 변경이 어떤 점에서 도움이 되는지 적어주세요.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 참고 자료 / Additional context
+      description: 예시 화면이나 스크린샷이 있다면 첨부해 주세요.
+    validations:
+      required: false
