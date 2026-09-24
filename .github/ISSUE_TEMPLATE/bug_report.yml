@@ -1,0 +1,88 @@
+name: 버그 리포트 / Bug Report
+description: DongClock에서 발생한 문제를 알려주세요.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        제보 감사합니다. 재현에 필요한 정보만 작성해 주세요. 비밀번호, 인증코드, 결제정보 등 민감한 정보는 올리지 마세요.
+
+  - type: dropdown
+    id: edition
+    attributes:
+      label: 제품 버전 / Edition
+      options:
+        - Basic
+        - Pro
+        - 잘 모르겠음 / Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: 앱 버전 / App version
+      placeholder: 예: 1.0.2.0
+    validations:
+      required: false
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 버전 / Windows version
+      placeholder: 예: Windows 11 24H2
+    validations:
+      required: false
+
+  - type: input
+    id: target
+    attributes:
+      label: 측정 대상 / Target site
+      description: 문제가 특정 사이트에서만 발생한다면 주소나 도메인을 적어주세요.
+      placeholder: 예: example.com
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 문제 내용 / What happened?
+      description: 실제로 어떤 문제가 발생했는지 설명해 주세요.
+      placeholder: 증상과 화면에 표시된 내용을 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법 / Steps to reproduce
+      placeholder: |
+        1. DongClock 실행
+        2. ...
+        3. ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작 / Expected behavior
+      placeholder: 정상이라면 어떻게 동작해야 한다고 생각했는지 적어주세요.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 추가 자료 / Additional context
+      description: 필요하면 스크린샷이나 로그를 끌어다 놓아 첨부할 수 있습니다.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 확인
+      options:
+        - label: 첨부 자료에 비밀번호, 토큰, 결제정보 등 민감한 정보가 없는지 확인했습니다.
+          required: true
