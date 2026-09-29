@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0e0f">
+  <title>DongClock Basic Guide | How to Measure Website Server Time</title>
+  <meta name="description" content="A step-by-step guide to using DongClock Basic: copy a website URL, paste it into DongClock, start measurement, and check the measurement status and result.">
+  <link rel="canonical" href="https://dongclock.com/guide/en.html">
+  <link rel="alternate" hreflang="ko" href="https://dongclock.com/guide/">
+  <link rel="alternate" hreflang="en" href="https://dongclock.com/guide/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://dongclock.com/guide/">
+  <meta property="og:title" content="DongClock Basic Guide">
+  <meta property="og:description" content="Learn how to measure a website's server time with DongClock Basic in eight steps.">
+  <meta property="og:image" content="https://dongclock.com/assets/dongclock-icon.png">
+  <meta property="og:url" content="https://dongclock.com/guide/en.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DongClock Server Time">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/png" sizes="256x256" href="/assets/dongclock-icon.png">
+  <link rel="apple-touch-icon" href="/assets/dongclock-icon.png">
+  <link rel="stylesheet" href="../styles.css?v=20260929-guide">
+  <style>
+    .guide-main{padding:86px 0 120px}
+    .guide-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.62fr);gap:72px;align-items:end;padding-bottom:62px;border-bottom:1px solid var(--line)}
+    .guide-hero h1{max-width:780px;margin-bottom:22px}
+    .guide-lead{max-width:720px;color:var(--muted);font-size:18px;line-height:1.75}
+    .guide-summary{padding:26px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+    .guide-summary strong{display:block;margin-bottom:12px;color:var(--accent);font-size:13px;letter-spacing:.08em}
+    .guide-summary ol{margin:0;padding-left:22px;color:var(--muted);font-size:14px}
+    .guide-summary li+li{margin-top:7px}
+    .guide-steps{display:grid;gap:28px;margin-top:68px}
+    .guide-step{display:grid;grid-template-columns:210px minmax(0,1fr);gap:34px;padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+    .guide-step-copy{padding:8px 0}
+    .guide-step-index{display:inline-flex;min-width:42px;height:28px;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid #315149;border-radius:999px;background:#0e1715;color:var(--accent);font:700 12px/1 ui-monospace,monospace}
+    .guide-step h2{margin-bottom:12px;font-size:28px;line-height:1.2;letter-spacing:-.035em}
+    .guide-step p{margin:0;color:var(--muted);font-size:15px;line-height:1.72}
+    .guide-shot{display:grid;place-items:center;min-width:0;padding:16px;border:1px solid var(--line-soft);border-radius:12px;background:#090c0d;overflow:hidden}
+    .guide-shot img{display:block;width:100%;height:auto;border-radius:8px}
+    .guide-note{margin-top:34px;padding:26px;border-left:2px solid var(--accent);background:var(--surface)}
+    .guide-note h2{margin-bottom:10px;font-size:22px}
+    .guide-note p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+    .guide-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+    html[lang="en"] .guide-hero h1,html[lang="en"] .guide-step h2,html[lang="en"] .guide-step p{word-break:normal;overflow-wrap:break-word}
+    @media(max-width:900px){
+      .guide-main{padding:58px 0 90px}
+      .guide-hero{grid-template-columns:1fr;gap:28px;padding-bottom:44px}
+      .guide-step{grid-template-columns:1fr;gap:22px;padding:22px}
+      .guide-step-copy{padding:0}
+      .guide-step h2{font-size:24px}
+      .guide-shot{padding:10px}
+    }
+    @media(max-width:520px){
+      .guide-main{padding-top:42px}
+      .guide-lead{font-size:16px}
+      .guide-summary{padding:20px}
+      .guide-steps{margin-top:46px}
+      .guide-step{padding:18px}
+      .guide-actions{display:grid}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="brand" href="../en.html" aria-label="DongClock Server Time home">
+        <img src="../assets/dongclock-icon.png" alt="" width="36" height="36">
+        <span>DongClock <b>Server Time</b></span>
+      </a>
+      <nav aria-label="Guide navigation">
+        <a href="../en.html">Home</a>
+        <a href="../en.html#plans-quick">Basic / Pro</a>
+        <a href="../accuracy/#en">Accuracy</a>
+        <a href="../feedback/?type=bug&amp;lang=en">Bug Report</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Language"><a href="./" lang="ko">한국어</a><a class="is-active" href="en.html" lang="en" aria-current="page">English</a></div>
+    </div>
+  </header>
+
+  <main class="guide-main" id="main">
+    <div class="container">
+      <section class="guide-hero">
+        <div>
+          <p class="eyebrow">DONGCLOCK BASIC GUIDE</p>
+          <h1>How to measure<br><em>website server time</em></h1>
+          <p class="guide-lead">Copy the address of the website you want to check, paste it into DongClock Basic, and start a measurement. The screenshots below follow the actual workflow from opening the website to completing a measurement session.</p>
+          <div class="guide-actions">
+            <a class="button button-primary" href="https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare" target="_blank" rel="noopener noreferrer">Download Basic</a>
+            <a class="button button-secondary" href="../en.html">Back to homepage</a>
+          </div>
+        </div>
+        <aside class="guide-summary" aria-label="Eight-step summary">
+          <strong>8 STEPS</strong>
+          <ol>
+            <li>Open the website you want to measure</li>
+            <li>Check the URL in the address bar</li>
+            <li>Copy the website address</li>
+            <li>Paste the address into DongClock</li>
+            <li>Start measurement</li>
+            <li>Check the initial measurement state</li>
+            <li>Watch the measurement status and estimated error</li>
+            <li>Finish or start a new measurement</li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="guide-steps" aria-label="DongClock Basic usage steps">
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">01</span><h2>Open the website you want to measure.</h2><p>Open the website whose server time you want to check. This can be a ticketing site, course-registration page, reservation service, or another time-sensitive website.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/1-webpage.png" alt="A browser showing the website to be measured" width="1918" height="1198" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">02</span><h2>Check the URL in the address bar.</h2><p>The HTTP or HTTPS address shown in the browser address bar is the target you will give to DongClock.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/2-address.png" alt="The website URL shown in the browser address bar" width="726" height="214" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">03</span><h2>Copy the website address.</h2><p>Select the full URL in the address bar and copy it. DongClock can use that address directly in the server-address field.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/3-copy.png" alt="Copying the website URL from the browser" width="991" height="679" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">04</span><h2>Paste the address into DongClock.</h2><p>Open DongClock Basic and paste the copied URL into the server-address field. You can also type the address manually.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/4-paste.png" alt="The copied URL pasted into DongClock Basic" width="1138" height="1023" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">05</span><h2>Select Start Measurement.</h2><p>After checking the address, select <strong>Start Measurement</strong>. DongClock begins observing the website's HTTP responses and network round-trip timing.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/5-start.png" alt="DongClock Basic before starting a measurement" width="1138" height="817" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">06</span><h2>Let the initial measurement settle.</h2><p>DongClock first gathers multiple observations and updates its server-time estimate and estimated error. It is better to watch the measurement for a while rather than rely on the first displayed value.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/6-beginning.png" alt="DongClock Basic during the initial measurement phase" width="1138" height="822" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">07</span><h2>Check the status and estimated error.</h2><p>While measurement continues, you can monitor the displayed server time, current state, and estimated error. Values may continue to adjust depending on network conditions and the target server's response behavior.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/7-end-5min.png" alt="DongClock Basic after the measurement has been running for a while" width="1138" height="822" loading="lazy"></figure>
+        </article>
+        <article class="guide-step">
+          <div class="guide-step-copy"><span class="guide-step-index">08</span><h2>Start a new session when needed.</h2><p>When the Basic measurement session ends, review the final state. Select <strong>Measure Again</strong> if you want to start a fresh measurement session.</p></div>
+          <figure class="guide-shot"><img src="../assets/guide/8-end.png" alt="DongClock Basic after the measurement session has finished" width="1135" height="816" loading="lazy"></figure>
+        </article>
+      </section>
+
+      <aside class="guide-note">
+        <h2>Good to know</h2>
+        <p>DongClock measures and displays server time. It does not automate clicks, registrations, reservations, or purchases. Because HTTP Date has limited resolution and network delay cannot be observed perfectly, the displayed milliseconds are an estimate derived from multiple observations rather than millisecond precision directly supplied by the server.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer><div class="container footer-grid"><div class="brand"><img src="../assets/dongclock-icon.png" alt="" width="32" height="32"><span>DongClock <b>Server Time</b></span></div><p>Precision-oriented HTTP server-time measurement for Windows.</p><div class="footer-content"><nav class="legal-links" aria-label="Legal and product notices"><a href="../terms/#en">End User License Agreement</a><a href="../privacy/#en">Privacy Policy</a><a href="../refund/#en">Refund Policy</a><a href="../accuracy/#en">Accuracy &amp; Limitations</a><a href="../open-source/#en">Open Source Licenses</a></nav><div class="footer-meta"><span>Windows 10 / 11 x64</span><span>Microsoft Store distribution</span></div><p class="seller-line">© 2026 DongClock · Seller / Developer: DongHa KIM · Support: <a href="mailto:dongclock2026@gmail.com">dongclock2026@gmail.com</a></p></div></div></footer>
+</body>
+</html>
