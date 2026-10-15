@@ -1,12 +1,11 @@
 const SITE_CONFIG = Object.freeze({
-  version: '1.0.0',
+  version: '1.3.0.0',
   // Microsoft Store listings for Basic and Pro are live.
-  microsoftStoreBasicUrl: 'https://apps.microsoft.com/detail/9n0z8vz90sk6?ocid=webpdpshare',
-  microsoftStoreProUrl: 'https://apps.microsoft.com/detail/9ph3wmbzpq50?hl=ko-KR&gl=KR'
+  microsoftStoreBasicUrl: 'https://apps.microsoft.com/detail/9n0z8vz90sk6',
+  microsoftStoreProUrl: 'https://apps.microsoft.com/detail/9ph3wmbzpq50'
 });
 
 const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'ko';
-const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const UI_COPY = Object.freeze({
   ko: {
@@ -40,7 +39,12 @@ document.querySelectorAll('.js-version').forEach((node) => {
 const configureStoreLinks = (selector, url, availableCopy, unavailableCopy) => {
   document.querySelectorAll(selector).forEach((link) => {
     if (url) {
-      link.href = url;
+      const destination = new URL(url);
+      if (link.href) {
+        const existing = new URL(link.href);
+        if (existing.hostname === destination.hostname && existing.pathname === destination.pathname && existing.searchParams.has('cid')) destination.searchParams.set('cid', existing.searchParams.get('cid'));
+      }
+      link.href = destination.href;
       link.textContent = availableCopy;
       link.removeAttribute('aria-disabled');
       link.removeAttribute('tabindex');
@@ -95,77 +99,4 @@ if (navToggle && nav) {
     nav.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
   });
-}
-
-const demoClock = document.querySelector('#demo-clock');
-const demoProgressCells = Array.from(document.querySelectorAll('.demo-progress-cell'));
-if (demoClock) {
-  const hoursMinutesSeconds = demoClock.querySelector('.clock-hms');
-  const milliseconds = demoClock.querySelector('.clock-millis');
-
-  const renderDemoClock = () => {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const millisValue = now.getMilliseconds();
-    const millis = String(millisValue).padStart(3, '0');
-
-    hoursMinutesSeconds.textContent = `${hours}:${minutes}:${seconds}`;
-    milliseconds.textContent = `.${millis}`;
-    demoClock.setAttribute('aria-label', `${hours}:${minutes}:${seconds}.${millis}`);
-
-    const filledSteps = Math.floor(millisValue / 50);
-    demoProgressCells.forEach((cell, index) => {
-      cell.classList.toggle('is-filled', index < filledSteps);
-    });
-  };
-
-  renderDemoClock();
-  window.setInterval(renderDemoClock, 50);
-}
-
-
-const demoErrorValue = document.querySelector('.demo-error-value');
-const demoErrorState = document.querySelector('.demo-error-state');
-if (demoErrorValue) {
-  const minimumErrorMs = 14;
-  const enteredAt = performance.now();
-  let currentErrorMs = randomInteger(300, 500);
-
-  const renderDemoError = () => {
-    demoErrorValue.textContent = pageLanguage === 'en'
-      ? `Estimated error ±${currentErrorMs} ms`
-      : `추정 오차 ±${currentErrorMs} ms`;
-
-    if (demoErrorState) {
-      const settled = currentErrorMs <= minimumErrorMs;
-      demoErrorState.textContent = pageLanguage === 'en'
-        ? (settled ? '● Error stabilized' : '◌ Adjusting error')
-        : (settled ? '● 오차 안정' : '◌ 오차 보정 중');
-      demoErrorState.classList.toggle('is-settled', settled);
-    }
-  };
-
-  renderDemoError();
-
-  const demoErrorTimer = window.setInterval(() => {
-    const elapsed = performance.now() - enteredAt;
-
-    if (elapsed <= 3000) {
-      currentErrorMs = randomInteger(300, 500);
-    } else if (currentErrorMs > minimumErrorMs) {
-      const reductionRatio = randomInteger(40, 70) / 100;
-      currentErrorMs = Math.max(
-        minimumErrorMs,
-        Math.round(currentErrorMs * reductionRatio)
-      );
-    }
-
-    renderDemoError();
-
-    if (currentErrorMs <= minimumErrorMs && elapsed > 3000) {
-      window.clearInterval(demoErrorTimer);
-    }
-  }, 1000);
 }
