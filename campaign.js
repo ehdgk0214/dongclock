@@ -2,7 +2,7 @@
 (() => {
   const params = new URLSearchParams(window.location.search);
   const cid = params.get('cid');
-  const valid = /^(?:dc_(?:ko|en)_(?:instagram|youtube|community)_(?:campus01|booking01|http01)|dc_(?:ko|en)_organic_(?:home|servertime|campus|ticketing|guide))$/;
+  const valid = /^(?:dc_(?:ko|en)_(?:instagram|youtube|community|x)_(?:campus01|booking01|http01|discovery01)|dc_(?:ko|en)_organic_(?:home|servertime|campus|ticketing|guide))$/;
   if (cid && valid.test(cid)) {
     document.querySelectorAll('.js-basic-link, .js-pro-link').forEach(link => {
       if (!link.href) return;
