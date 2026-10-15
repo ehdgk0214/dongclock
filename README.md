@@ -1,3 +1,51 @@
+# 동클 DongClock · Windows 서버시간 참고 도구
+
+서버시간 확인, 수강신청 준비, 티켓팅 준비를 위한 **무료 DongClock Basic**과 공식 사용 안내입니다. DongClock은 대상 웹사이트의 HTTP Date와 네트워크 왕복 시간을 관찰해 웹 응답의 시각을 추정하는 Windows 앱입니다.
+
+**[무료 Basic 설치 · Microsoft Store](https://apps.microsoft.com/detail/9n0z8vz90sk6?cid=dc_ko_github_discovery01) · [공식 홈페이지](https://dongclock.com/?cid=dc_ko_github_discovery01) · [English website](https://dongclock.com/en.html?cid=dc_ko_github_discovery01)**
+
+- **지원 환경:** Windows 10/11 x64 PC. 휴대폰에서는 웹 안내와 체크리스트를 이용할 수 있습니다.
+- **시작 방법:** Basic 설치 → 확인할 공식 HTTP/HTTPS 주소 붙여넣기 → 측정 시작 → 시간과 함께 측정 상태·예상오차 확인.
+- **저장소 범위:** 이곳은 공식 사이트의 HTML/CSS/JavaScript와 안내 문서를 관리하는 정적 웹사이트 저장소입니다. Windows 앱의 Rust 측정 엔진을 공개하는 소스 저장소는 아닙니다.
+
+<img src="assets/marketing/basic-idle.png" alt="동클 Basic의 실제 측정 전 주소 입력 화면" width="600">
+
+*실제 앱의 측정 전 화면입니다. 서버시간 측정 결과나 정확도 인증 화면이 아닙니다.*
+
+## 목적에 맞는 무료 안내
+
+| 필요한 것 | 바로 보기 |
+| --- | --- |
+| PC 시계와 서버시간의 차이, HTTP Date 읽는 법 | [서버시간 확인 안내](https://dongclock.com/server-time/?cid=dc_ko_github_discovery01) |
+| 수강신청 일정·과목 코드·분반·대안 점검 | [수강신청 준비 체크리스트](https://dongclock.com/course-registration/?cid=dc_ko_github_discovery01) |
+| 티켓 오픈 안내·인증·예매 완료 내역 점검 | [티켓팅 준비 체크리스트](https://dongclock.com/ticketing/?cid=dc_ko_github_discovery01) |
+| 앱에 주소를 넣고 측정을 시작하는 순서 | [Basic 단계별 사용 가이드](https://dongclock.com/guide/?cid=dc_ko_github_discovery01) |
+
+세 가지 준비 안내는 로그인 없이 사용할 수 있습니다. 체크와 메모는 기본적으로 저장하지 않으며, ‘이 브라우저에 저장’을 선택하면 현재 기기의 브라우저에 저장됩니다.
+
+## 시간 표시를 참고할 때
+
+학교·예매처의 공식 일정과 이용 규칙을 먼저 확인하세요. HTTP 응답의 Date는 서비스 내부의 신청·예매 판정 시각과 다를 수 있습니다. CDN·캐시와 네트워크 상태도 관측에 영향을 줍니다.
+
+화면의 밀리초와 예상오차는 추정 표시입니다. 고정된 밀리초 정확도나 수강신청·티켓팅 성공을 보장하지 않습니다. 자동 클릭·자동 수강신청·구매 자동화 기능은 제공하지 않습니다. [정확도 및 한계](https://dongclock.com/accuracy/?cid=dc_ko_github_discovery01)에서 관측 범위를 확인할 수 있습니다.
+
+## DongClock in English
+
+**DongClock Basic is a free server-time reference app for Windows 10/11 x64.** It estimates a website response’s time using HTTP Date and network round-trip observations. Enter the official HTTP or HTTPS URL, start measurement, and read the measurement status and estimated error alongside the clock.
+
+Use it as a reference while preparing for course registration or ticket booking. The service’s official schedule and rules remain the basis for your actions. HTTP response time may differ from the service’s internal registration or booking clock. Millisecond digits and estimated error do not guarantee millisecond accuracy or a successful registration or booking. DongClock does not automate clicks, registration, or purchases.
+
+- [Install free Basic from Microsoft Store](https://apps.microsoft.com/detail/9n0z8vz90sk6?cid=dc_en_github_discovery01)
+- [English website](https://dongclock.com/en.html?cid=dc_en_github_discovery01) · [Step-by-step Basic guide in English](https://dongclock.com/guide/en.html?cid=dc_en_github_discovery01)
+- [Server-time guide](https://dongclock.com/server-time/?cid=dc_en_github_discovery01), [course-registration checklist](https://dongclock.com/course-registration/?cid=dc_en_github_discovery01), and [ticketing checklist](https://dongclock.com/ticketing/?cid=dc_en_github_discovery01) are in Korean.
+- This repository contains the official static website built with HTML, CSS, and JavaScript. It is not the source repository for the Windows app’s Rust measurement engine.
+
+## 공식 소식과 문의 · Official channels
+
+[YouTube @Dongclock](https://www.youtube.com/@Dongclock) · [Instagram @dongclock2026](https://www.instagram.com/dongclock2026/) · [X @Dongclock2026](https://x.com/Dongclock2026) · [문의 / Contact](mailto:dongclock2026@gmail.com) · [버그·피드백 / Feedback](https://dongclock.com/feedback/?cid=dc_en_github_discovery01)
+
+---
+
 # DongClock Server Time website
 
 DongClock Server Time의 한국어·영어 공식 제품 소개용 정적 사이트입니다. 빌드 도구나 외부 프레임워크 없이 HTML/CSS/JavaScript만 사용하므로 GitHub Pages에 그대로 배포할 수 있습니다.
