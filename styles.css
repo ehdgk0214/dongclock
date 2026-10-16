@@ -578,3 +578,11 @@ ol.continuity-visual{min-height:320px}
 
 /* Search-intent guides: ordinary crawlable links, no external requests. */
 .discovery-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.discovery-hub-grid>a{display:flex;flex-direction:column;gap:16px;padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);text-decoration:none;min-width:0}.discovery-hub-grid>a:hover{border-color:var(--accent)}.discovery-hub-grid>a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.discovery-hub-grid span,.discovery-hub-grid b{color:var(--accent);font-size:14px}.discovery-hub-grid h3{margin:0;font-size:24px}.discovery-hub-grid p{margin:0;color:var(--muted);line-height:1.7}.discovery-hub-grid b{margin-top:auto}@media(max-width:850px){.discovery-hub-grid{grid-template-columns:1fr}.discovery-hub-grid>a{padding:24px}}
+
+/* Prominent, accessible disclosure of AI assistance during development. */
+.ai-assist-notice{display:flex;flex-direction:column;gap:5px;width:fit-content;max-width:600px;margin-top:22px;padding:14px 17px;border:1px solid rgba(102,223,194,.4);border-radius:11px;background:rgba(102,223,194,.065);text-decoration:none;transition:border-color .15s ease,background-color .15s ease}
+.ai-assist-notice:hover,.ai-assist-notice:focus-visible{border-color:var(--accent);background:rgba(102,223,194,.12)}
+.ai-assist-notice:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ai-assist-label{color:var(--accent);font-size:13px;line-height:1.45;font-weight:700;letter-spacing:.015em}
+.ai-assist-copy{color:#c9d5d1;font-size:12px;line-height:1.55}
+@media(max-width:680px){.ai-assist-notice{margin-top:17px;padding:12px 14px;max-width:100%}}
