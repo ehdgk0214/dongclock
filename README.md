@@ -1,5 +1,8 @@
 # 동클 DongClock · Windows 서버시간 참고 도구
 
+> **Developed with AI Assistance · AI 보조 개발 공개**  
+> DongClock은 기획·설계·코딩·분석·테스트 및 콘텐츠 제작에 생성형 AI를 보조 도구로 활용합니다. 제품 방향과 최종 판단·책임은 개발자에게 있으며, 실행 중 서버시간 추정은 HTTP Date 관측과 측정 알고리즘에 기반합니다. [AI 활용 안내 / AI Transparency](https://dongclock.com/ai-transparency/)
+
 서버시간 확인, 수강신청 준비, 티켓팅 준비를 위한 **무료 DongClock Basic**과 공식 사용 안내입니다. DongClock은 대상 웹사이트의 HTTP Date와 네트워크 왕복 시간을 관찰해 웹 응답의 시각을 추정하는 Windows 앱입니다.
 
 **[무료 Basic 설치 · Microsoft Store](https://apps.microsoft.com/detail/9n0z8vz90sk6?cid=dc_ko_github_discovery01) · [공식 홈페이지](https://dongclock.com/?cid=dc_ko_github_discovery01) · [English website](https://dongclock.com/en.html?cid=dc_ko_github_discovery01)**
@@ -30,6 +33,8 @@
 화면의 밀리초와 예상오차는 추정 표시입니다. 고정된 밀리초 정확도나 수강신청·티켓팅 성공을 보장하지 않습니다. 자동 클릭·자동 수강신청·구매 자동화 기능은 제공하지 않습니다. [정확도 및 한계](https://dongclock.com/accuracy/?cid=dc_ko_github_discovery01)에서 관측 범위를 확인할 수 있습니다.
 
 ## DongClock in English
+
+**Developed with AI Assistance.** Generative AI assists product planning, software design, coding, analysis, testing, and content creation. The developer retains final decisions and responsibility. At runtime DongClock estimates server time from HTTP Date observations and measurement algorithms, not generative AI. [AI Assistance Disclosure](https://dongclock.com/ai-transparency/#en).
 
 **DongClock Basic is a free server-time reference app for Windows 10/11 x64.** It estimates a website response’s time using HTTP Date and network round-trip observations. Enter the official HTTP or HTTPS URL, start measurement, and read the measurement status and estimated error alongside the clock.
 
